@@ -98,6 +98,7 @@ body {
 section { padding: clamp(64px, 13vw, 132px) 0; }
 
 /* ---- hero ---- */
+/* アプリのホーム画面と同じ ambient gradient（右上に淡い暖色、左下に判定色の緑） */
 .hero {
   min-height: 100svh;
   display: flex;
@@ -107,6 +108,10 @@ section { padding: clamp(64px, 13vw, 132px) 0; }
   text-align: center;
   padding: clamp(48px, 10vw, 96px) 24px clamp(40px, 8vw, 72px);
   position: relative;
+  background:
+    radial-gradient(120% 60% at 85% -5%, rgba(203, 91, 81, 0.10), transparent 60%),
+    radial-gradient(130% 75% at 10% 100%, rgba(52, 114, 85, 0.13), transparent 65%),
+    linear-gradient(180deg, #f6efec, var(--bg));
 }
 .wordmark {
   font-size: 15px;
@@ -129,69 +134,59 @@ section { padding: clamp(64px, 13vw, 132px) 0; }
   margin: clamp(16px, 4vw, 22px) auto 0;
 }
 
-/* ---- verdict card (the TARIRU signature) ---- */
+/* ---- verdict card (アプリのホーム判定エリアを再現: ガラスカード + 行形式 + monospace 数字) ---- */
 .verdict {
-  width: min(88vw, 340px);
-  margin: clamp(36px, 8vw, 60px) auto 0;
-  padding: 26px 28px 24px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  width: min(88vw, 360px);
+  margin: clamp(36px, 8vw, 56px) auto 0;
+  padding: 22px 24px 20px;
+  background: rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
   border-radius: 24px;
-  box-shadow: 0 30px 64px -30px rgba(52, 114, 85, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 28px 56px -28px rgba(52, 114, 85, 0.4);
   text-align: left;
 }
 .verdict-label { margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
 .verdict-answer {
-  margin: 6px 0 0;
-  font-size: 34px;
+  margin: 6px 0 16px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--primary);
+  color: var(--ink);
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.verdict-answer::before {
+.verdict-answer::after {
   content: "";
   flex: none;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--primary-soft);
-  /* チェックマーク */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23347255' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
-  background-size: 16px;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* アプリと同じ: 濃緑塗りつぶし + 白チェック */
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
-.verdict-amount {
-  margin: 4px 0 0;
+.verdict-rows { margin: 0; display: grid; gap: 9px; }
+.verdict-rows > div { display: flex; justify-content: space-between; align-items: baseline; }
+.verdict-rows dt { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.verdict-rows dd {
+  margin: 0;
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
-  color: var(--primary-bright);
+  color: var(--ink);
 }
-.verdict-bar {
-  margin-top: 18px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--surface-quiet);
-  overflow: hidden;
-}
-.verdict-fill {
-  display: block;
-  height: 100%;
-  width: 87.4%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-bright));
-}
-.js .verdict-fill { width: 0; transition: width 1.1s 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
-.js .verdict.in .verdict-fill { width: 87.4%; }
-.verdict-caption {
-  margin: 10px 0 0;
+.verdict-rows dd.pos { color: var(--primary); }
+.verdict-rows dd.neg { color: var(--coral); }
+.verdict-hr { border: 0; border-top: 1px solid var(--line); margin: 14px 0 12px; }
+.verdict-total { display: flex; justify-content: space-between; align-items: baseline; }
+.verdict-total span { font-size: 15px; font-weight: 700; color: var(--ink); }
+.verdict-total strong {
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
-  font-size: 11.5px;
-  color: var(--ink-faint);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
 }
 
 /* ---- cta ---- */
@@ -266,8 +261,8 @@ h2 {
   margin: 30px 0 0;
   padding: 22px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   color: var(--ink-soft);
   font-size: clamp(15px, 4vw, 16px);
 }
@@ -280,8 +275,8 @@ h2 {
   align-items: flex-start;
   padding: 22px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .step .n {
   flex: none;
@@ -319,13 +314,12 @@ h2 {
   height: auto;
   display: block;
   border-radius: 28px;
-  border: 1px solid var(--line);
-  box-shadow: 0 26px 54px -30px rgba(40, 42, 38, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 26px 54px -30px rgba(40, 42, 38, 0.35);
   background: var(--surface);
   scroll-snap-align: center;
 }
 
-/* ---- features (4-up grid) ---- */
+/* ---- features (白カード + アプリの丸アイコンバッジ) ---- */
 .features {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -334,15 +328,24 @@ h2 {
 }
 @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
 .f {
-  padding: 22px 20px;
+  padding: 22px 20px 20px;
   border-radius: 20px;
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--f, var(--primary)) 8%, #fff),
-      color-mix(in srgb, var(--f, var(--primary)) 18%, #fff));
-  border: 1px solid color-mix(in srgb, var(--f, var(--primary)) 20%, var(--line));
+  background: var(--surface);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-.f strong { display: block; color: color-mix(in srgb, var(--f, var(--primary)) 85%, #000); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.f .f-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: #fff;
+  background: var(--f, var(--primary));
+}
+.f .f-icon svg { width: 19px; height: 19px; }
+.f strong { display: block; color: var(--ink); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
 .f span { color: var(--ink-soft); font-size: 13.5px; line-height: 1.6; }
 
 /* ---- privacy ---- */
@@ -391,7 +394,6 @@ footer {
   .scroll-cue { animation: none; }
   .js .hero .wordmark, .js .hero h1, .js .hero .sub, .js .hero .verdict, .js .hero .cta { animation: none; }
   .js .reveal, .js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }
-  .js .verdict-fill { width: 87.4%; transition: none; }
 }
     </style>
   </head>
@@ -401,11 +403,15 @@ footer {
       <h1>今月の支払い、足りる？</h1>
       <p class="sub">口座残高と支払い予定を入れるだけ。1円単位の家計簿は、もうつけなくていい。</p>
       <div class="verdict" aria-hidden="true">
-        <p class="verdict-label"><span class="verdict-month">今月</span>の支払いに</p>
+        <p class="verdict-label"><span class="verdict-month">今月</span>の支払い</p>
         <p class="verdict-answer">足りる</p>
-        <p class="verdict-amount">余裕 +¥23,456</p>
-        <div class="verdict-bar"><span class="verdict-fill"></span></div>
-        <p class="verdict-caption">残高 ¥186,240 ・ 支払い予定 ¥162,784</p>
+        <dl class="verdict-rows">
+          <div><dt>現在の残高</dt><dd>¥86,240</dd></div>
+          <div><dt>+ 収入予定</dt><dd class="pos">¥100,000</dd></div>
+          <div><dt>− 支出予定</dt><dd class="neg">−¥162,784</dd></div>
+        </dl>
+        <hr class="verdict-hr" />
+        <div class="verdict-total"><span>残る金額</span><strong>¥23,456</strong></div>
       </div>
       <a class="cta" href="https://apps.apple.com/jp/app/id6752897442?ct=lp_hero" rel="noopener">App Store で入手</a>
       <div class="scroll-cue" aria-hidden="true">下へ</div>
@@ -466,10 +472,10 @@ footer {
           <h2>がんばらないのに、ちゃんと見える。</h2>
           <p class="lead">記録が目的のアプリではありません。「足りるか」に必要なものだけ。</p>
           <div class="features stagger" aria-label="TARIRU の主な機能">
-        <div class="f" style="--f: var(--f-green)"><strong>足りるかの判定</strong><span>残高と予定収支から自動計算。余裕額・不足額がひと目でわかります。</span></div>
-        <div class="f" style="--f: var(--f-blue)"><strong>口座もカードも、ひとつに</strong><span>銀行口座・現金・クレジットカード・口座振替をまとめて一画面で。</span></div>
-        <div class="f" style="--f: var(--f-mustard)"><strong>毎月の収支は自動で</strong><span>給与・家賃・サブスクは一度設定すれば、毎月自動で登録されます。</span></div>
-        <div class="f" style="--f: var(--f-purple)"><strong>iCloud で安心</strong><span>データは自動でバックアップ・同期。機種変更しても、そのまま使えます。</span></div>
+        <div class="f" style="--f: var(--f-green)"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><strong>足りるかの判定</strong><span>残高と予定収支から自動計算。余裕額・不足額がひと目でわかります。</span></div>
+        <div class="f" style="--f: var(--f-blue)"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg></div><strong>口座もカードも、ひとつに</strong><span>銀行口座・現金・クレジットカード・口座振替をまとめて一画面で。</span></div>
+        <div class="f" style="--f: var(--f-mustard)"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.5l4 4-4 4"/><path d="M3 11v-1.5a3 3 0 0 1 3-3h15"/><path d="M7 21.5l-4-4 4-4"/><path d="M21 13v1.5a3 3 0 0 1-3 3H3"/></svg></div><strong>毎月の収支は自動で</strong><span>給与・家賃・サブスクは一度設定すれば、毎月自動で登録されます。</span></div>
+        <div class="f" style="--f: var(--f-purple)"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 18.5a4.5 4.5 0 0 0 .9-8.9 6 6 0 0 0-11.7 1.3A3.75 3.75 0 0 0 7 18.5z"/></svg></div><strong>iCloud で安心</strong><span>データは自動でバックアップ・同期。機種変更しても、そのまま使えます。</span></div>
           </div>
         </div>
       </section>

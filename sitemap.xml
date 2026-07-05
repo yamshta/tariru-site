@@ -26,6 +26,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru.app/journal/" />
   </url>
   <url>
+    <loc>https://tariru.app/journal/kakeibo-tsuzukanai/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru.app/journal/kakeibo-tsuzukanai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru.app/journal/kakeibo-tsuzukanai/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
     <loc>https://tariru.app/journal/fukusu-koza-kanri/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tariru.app/journal/fukusu-koza-kanri/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru.app/journal/fukusu-koza-kanri/" />
@@ -41,12 +47,6 @@
     <loc>https://tariru.app/journal/hitorigurashi-okane-kanri/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://tariru.app/journal/hitorigurashi-okane-kanri/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru.app/journal/hitorigurashi-okane-kanri/" />
-    <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://tariru.app/journal/kakeibo-tsuzukanai/</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru.app/journal/kakeibo-tsuzukanai/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru.app/journal/kakeibo-tsuzukanai/" />
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>

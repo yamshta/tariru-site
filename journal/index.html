@@ -88,13 +88,38 @@ main { max-width: 680px; }
   text-transform: uppercase;
   margin: 0 0 14px;
 }
-h1 { line-height: 1.4; }
-.updated { font-size: 13px; color: var(--ink-soft); margin: 0 0 32px; }
-article h2 { font-size: 20px; margin: 40px 0 12px; }
-article h3 { font-size: 16px; margin: 24px 0 8px; }
-article p { line-height: 1.9; }
-article ul, article ol { line-height: 1.9; color: var(--ink-soft); padding-left: 1.4em; margin: 0 0 16px; }
-article li { margin: 4px 0; }
+h1 { font-size: clamp(24px, 6vw, 30px); line-height: 1.5; letter-spacing: 0.01em; }
+.updated { display: flex; gap: 14px; font-size: 13px; color: var(--ink-soft); margin: 0 0 36px; }
+article p { line-height: 2.0; color: #4a4c48; margin: 0 0 20px; }
+/* リード（最初の段落）は少し大きく濃く: 冒頭で「自分の話だ」と思わせる */
+article > p:first-of-type { font-size: 17px; color: var(--ink); }
+article h2 {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 56px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+article h3 { font-size: 16.5px; margin: 32px 0 10px; }
+/* 蛍光マーカー風の強調: 流し読みでも要点が拾える */
+article strong {
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, var(--primary-soft) 62%);
+  padding: 0 1px;
+}
+article ul, article ol { line-height: 2.0; color: #4a4c48; padding-left: 1.5em; margin: 0 0 20px; }
+article li { margin: 6px 0; }
+article li::marker { color: var(--primary); font-weight: 700; }
+article blockquote {
+  margin: 0 0 20px;
+  padding: 14px 20px;
+  background: #f2f2f4;
+  border-radius: 14px;
+  color: var(--ink);
+}
+article blockquote p { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px; line-height: 1.9; }
+article a { color: var(--primary); }
 .cta {
   display: inline-block;
   margin-top: 18px;
@@ -109,11 +134,11 @@ article li { margin: 4px 0; }
 }
 .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
 .app-pitch {
-  margin-top: 48px;
+  margin-top: 56px;
   padding: 32px 28px;
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 .app-pitch h2 { margin-top: 0; font-size: 19px; }
@@ -135,8 +160,7 @@ article li { margin: 4px 0; }
   height: auto;
   display: block;
   border-radius: 20px;
-  border: 1px solid var(--line);
-  box-shadow: 0 16px 32px -20px rgba(40, 42, 38, 0.4);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08), 0 16px 32px -20px rgba(40, 42, 38, 0.35);
   scroll-snap-align: start;
 }
 .rating {
@@ -159,10 +183,28 @@ article li { margin: 4px 0; }
 .footer-links a { color: var(--ink-soft); text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; }
 .cards { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
-.card { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
-.card a { display: block; padding: 20px 22px; text-decoration: none; color: inherit; }
-.card h2 { margin: 0 0 6px; font-size: 17px; }
-.card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.card {
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09); }
+.card a { display: block; padding: 22px 24px; text-decoration: none; color: inherit; }
+.card .card-meta { display: flex; gap: 10px; align-items: center; margin: 0 0 10px; }
+.card .tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.card .read-min { font-size: 12px; color: var(--ink-soft); }
+.card h2 { margin: 0 0 8px; font-size: 17px; line-height: 1.6; color: var(--ink); }
+.card p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+.card .more { display: block; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--primary); }
     </style>
   </head>
   <body>
@@ -172,39 +214,51 @@ article li { margin: 4px 0; }
       <p class="lead">お金の不安を、がんばらずに軽くするためのヒント。</p>
       <ul class="cards">
         <li class="card">
+          <a href="/journal/kakeibo-tsuzukanai/">
+            <p class="card-meta"><span class="tag">方法</span><span class="read-min">約3分</span></p>
+            <h2>家計簿が続かないのは、あなたのせいじゃない。「記録しない」お金の管理法</h2>
+            <p>家計簿が続かない。何度も挫折した。そんな人のために、1円単位の記録をやめて「残高と予定だけ」でお金を回す管理法を、手順つきでまとめました。</p>
+            <span class="more">読む →</span>
+          </a>
+        </li>
+        <li class="card">
           <a href="/journal/fukusu-koza-kanri/">
+            <p class="card-meta"><span class="tag">悩み</span><span class="read-min">約3分</span></p>
             <h2>口座が多すぎて把握できない。複数口座をラクに管理する考え方</h2>
             <p>給与口座、引き落とし口座、貯金用、昔作った口座…。複数口座で全体像がつかめない人のための、役割分担と「合計で見る」管理の考え方をまとめました。</p>
+            <span class="more">読む →</span>
           </a>
         </li>
         <li class="card">
           <a href="/journal/hikiotoshi-zandaka-busoku/">
+            <p class="card-meta"><span class="tag">悩み</span><span class="read-min">約3分</span></p>
             <h2>引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法</h2>
             <p>引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。</p>
+            <span class="more">読む →</span>
           </a>
         </li>
         <li class="card">
           <a href="/journal/hitorigurashi-okane-kanri/">
+            <p class="card-meta"><span class="tag">暮らし</span><span class="read-min">約3分</span></p>
             <h2>一人暮らしのお金管理、最低限これだけ。ズボラでも回る仕組み</h2>
             <p>一人暮らしを始めたけどお金の管理が分からない。家計簿は面倒。そんな人のために、固定費の把握と月2回の残高確認だけで回る最低限の仕組みをまとめました。</p>
-          </a>
-        </li>
-        <li class="card">
-          <a href="/journal/kakeibo-tsuzukanai/">
-            <h2>家計簿が続かないのは、あなたのせいじゃない。「記録しない」お金の管理法</h2>
-            <p>家計簿が続かない。何度も挫折した。そんな人のために、1円単位の記録をやめて「残高と予定だけ」でお金を回す管理法を、手順つきでまとめました。</p>
+            <span class="more">読む →</span>
           </a>
         </li>
         <li class="card">
           <a href="/journal/koteihi-mieruka/">
+            <p class="card-meta"><span class="tag">方法</span><span class="read-min">約3分</span></p>
             <h2>固定費の見える化だけで、家計はだいたい回る</h2>
             <p>節約というと日々の変動費を我慢しがち。でも家計の土台は固定費です。固定費を一覧化するだけで支出の大半が予測可能になる理由と、見える化の具体的な手順。</p>
+            <span class="more">読む →</span>
           </a>
         </li>
         <li class="card">
           <a href="/journal/kyuryobi-mae-okane-tarinai/">
+            <p class="card-meta"><span class="tag">悩み</span><span class="read-min">約3分</span></p>
             <h2>給料日前、お金が足りるか不安になる。ソワソワを消す3つの手順</h2>
             <p>給料日前になると口座残高を何度も確認してしまう。お金が足りるか分からなくて不安。その正体は金額ではなく「見えないこと」。不安を数字に変える3つの手順をまとめました。</p>
+            <span class="more">読む →</span>
           </a>
         </li>
       </ul>

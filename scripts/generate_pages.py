@@ -62,11 +62,16 @@ LOCALES = {
         "hero_sub": "口座残高と支払い予定を入れるだけ。1円単位の家計簿は、もうつけなくていい。",
         "cta": "App Store で入手",
         "scroll_cue": "下へ",
-        # Hero verdict card (the TARIRU signature)
-        "verdict_label_suffix": "の支払いに",
+        # Hero verdict card — アプリのホーム画面（判定エリア）を再現
+        "verdict_label_suffix": "の支払い",
         "verdict_answer": "足りる",
-        "verdict_amount": "余裕 +¥23,456",
-        "verdict_caption": "残高 ¥186,240 ・ 支払い予定 ¥162,784",
+        "verdict_rows": [
+            ("現在の残高", "¥86,240", ""),
+            ("+ 収入予定", "¥100,000", "pos"),
+            ("− 支出予定", "−¥162,784", "neg"),
+        ],
+        "verdict_total_label": "残る金額",
+        "verdict_total": "¥23,456",
         # Why
         "why_eyebrow": "なぜ TARIRU か",
         "why_headline": "給料日前、口座残高を何度も確認していませんか。",
@@ -280,6 +285,7 @@ body {
 section { padding: clamp(64px, 13vw, 132px) 0; }
 
 /* ---- hero ---- */
+/* アプリのホーム画面と同じ ambient gradient（右上に淡い暖色、左下に判定色の緑） */
 .hero {
   min-height: 100svh;
   display: flex;
@@ -289,6 +295,10 @@ section { padding: clamp(64px, 13vw, 132px) 0; }
   text-align: center;
   padding: clamp(48px, 10vw, 96px) 24px clamp(40px, 8vw, 72px);
   position: relative;
+  background:
+    radial-gradient(120% 60% at 85% -5%, rgba(203, 91, 81, 0.10), transparent 60%),
+    radial-gradient(130% 75% at 10% 100%, rgba(52, 114, 85, 0.13), transparent 65%),
+    linear-gradient(180deg, #f6efec, var(--bg));
 }
 .wordmark {
   font-size: 15px;
@@ -311,69 +321,59 @@ section { padding: clamp(64px, 13vw, 132px) 0; }
   margin: clamp(16px, 4vw, 22px) auto 0;
 }
 
-/* ---- verdict card (the TARIRU signature) ---- */
+/* ---- verdict card (アプリのホーム判定エリアを再現: ガラスカード + 行形式 + monospace 数字) ---- */
 .verdict {
-  width: min(88vw, 340px);
-  margin: clamp(36px, 8vw, 60px) auto 0;
-  padding: 26px 28px 24px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  width: min(88vw, 360px);
+  margin: clamp(36px, 8vw, 56px) auto 0;
+  padding: 22px 24px 20px;
+  background: rgba(255, 255, 255, 0.62);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
   border-radius: 24px;
-  box-shadow: 0 30px 64px -30px rgba(52, 114, 85, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 28px 56px -28px rgba(52, 114, 85, 0.4);
   text-align: left;
 }
 .verdict-label { margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
 .verdict-answer {
-  margin: 6px 0 0;
-  font-size: 34px;
+  margin: 6px 0 16px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--primary);
+  color: var(--ink);
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.verdict-answer::before {
+.verdict-answer::after {
   content: "";
   flex: none;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--primary-soft);
-  /* チェックマーク */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23347255' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
-  background-size: 16px;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* アプリと同じ: 濃緑塗りつぶし + 白チェック */
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
-.verdict-amount {
-  margin: 4px 0 0;
+.verdict-rows { margin: 0; display: grid; gap: 9px; }
+.verdict-rows > div { display: flex; justify-content: space-between; align-items: baseline; }
+.verdict-rows dt { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.verdict-rows dd {
+  margin: 0;
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
-  color: var(--primary-bright);
+  color: var(--ink);
 }
-.verdict-bar {
-  margin-top: 18px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--surface-quiet);
-  overflow: hidden;
-}
-.verdict-fill {
-  display: block;
-  height: 100%;
-  width: 87.4%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-bright));
-}
-.js .verdict-fill { width: 0; transition: width 1.1s 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
-.js .verdict.in .verdict-fill { width: 87.4%; }
-.verdict-caption {
-  margin: 10px 0 0;
+.verdict-rows dd.pos { color: var(--primary); }
+.verdict-rows dd.neg { color: var(--coral); }
+.verdict-hr { border: 0; border-top: 1px solid var(--line); margin: 14px 0 12px; }
+.verdict-total { display: flex; justify-content: space-between; align-items: baseline; }
+.verdict-total span { font-size: 15px; font-weight: 700; color: var(--ink); }
+.verdict-total strong {
   font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
-  font-size: 11.5px;
-  color: var(--ink-faint);
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
 }
 
 /* ---- cta ---- */
@@ -448,8 +448,8 @@ h2 {
   margin: 30px 0 0;
   padding: 22px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   color: var(--ink-soft);
   font-size: clamp(15px, 4vw, 16px);
 }
@@ -462,8 +462,8 @@ h2 {
   align-items: flex-start;
   padding: 22px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .step .n {
   flex: none;
@@ -501,13 +501,12 @@ h2 {
   height: auto;
   display: block;
   border-radius: 28px;
-  border: 1px solid var(--line);
-  box-shadow: 0 26px 54px -30px rgba(40, 42, 38, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 26px 54px -30px rgba(40, 42, 38, 0.35);
   background: var(--surface);
   scroll-snap-align: center;
 }
 
-/* ---- features (4-up grid) ---- */
+/* ---- features (白カード + アプリの丸アイコンバッジ) ---- */
 .features {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -516,15 +515,24 @@ h2 {
 }
 @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
 .f {
-  padding: 22px 20px;
+  padding: 22px 20px 20px;
   border-radius: 20px;
-  background:
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--f, var(--primary)) 8%, #fff),
-      color-mix(in srgb, var(--f, var(--primary)) 18%, #fff));
-  border: 1px solid color-mix(in srgb, var(--f, var(--primary)) 20%, var(--line));
+  background: var(--surface);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-.f strong { display: block; color: color-mix(in srgb, var(--f, var(--primary)) 85%, #000); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.f .f-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: #fff;
+  background: var(--f, var(--primary));
+}
+.f .f-icon svg { width: 19px; height: 19px; }
+.f strong { display: block; color: var(--ink); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
 .f span { color: var(--ink-soft); font-size: 13.5px; line-height: 1.6; }
 
 /* ---- privacy ---- */
@@ -573,7 +581,6 @@ footer {
   .scroll-cue { animation: none; }
   .js .hero .wordmark, .js .hero h1, .js .hero .sub, .js .hero .verdict, .js .hero .cta { animation: none; }
   .js .reveal, .js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }
-  .js .verdict-fill { width: 87.4%; transition: none; }
 }
 """
 
@@ -685,6 +692,7 @@ a { color: var(--ink); }
 
 # Journal (content SEO article + hub) pages: long-form reading layout on top of SUPPORT_CSS,
 # plus the LP's pill CTA and a card grid for the /journal/ hub listing.
+# 直帰対策: 読みやすさのリズム（リード強調・マーカー付き strong・目立つ h2）を優先する。
 JOURNAL_CSS = SUPPORT_CSS + """\
 :root {
   --primary: #347255;
@@ -700,13 +708,38 @@ main { max-width: 680px; }
   text-transform: uppercase;
   margin: 0 0 14px;
 }
-h1 { line-height: 1.4; }
-.updated { font-size: 13px; color: var(--ink-soft); margin: 0 0 32px; }
-article h2 { font-size: 20px; margin: 40px 0 12px; }
-article h3 { font-size: 16px; margin: 24px 0 8px; }
-article p { line-height: 1.9; }
-article ul, article ol { line-height: 1.9; color: var(--ink-soft); padding-left: 1.4em; margin: 0 0 16px; }
-article li { margin: 4px 0; }
+h1 { font-size: clamp(24px, 6vw, 30px); line-height: 1.5; letter-spacing: 0.01em; }
+.updated { display: flex; gap: 14px; font-size: 13px; color: var(--ink-soft); margin: 0 0 36px; }
+article p { line-height: 2.0; color: #4a4c48; margin: 0 0 20px; }
+/* リード（最初の段落）は少し大きく濃く: 冒頭で「自分の話だ」と思わせる */
+article > p:first-of-type { font-size: 17px; color: var(--ink); }
+article h2 {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 56px 0 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+article h3 { font-size: 16.5px; margin: 32px 0 10px; }
+/* 蛍光マーカー風の強調: 流し読みでも要点が拾える */
+article strong {
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, var(--primary-soft) 62%);
+  padding: 0 1px;
+}
+article ul, article ol { line-height: 2.0; color: #4a4c48; padding-left: 1.5em; margin: 0 0 20px; }
+article li { margin: 6px 0; }
+article li::marker { color: var(--primary); font-weight: 700; }
+article blockquote {
+  margin: 0 0 20px;
+  padding: 14px 20px;
+  background: #f2f2f4;
+  border-radius: 14px;
+  color: var(--ink);
+}
+article blockquote p { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px; line-height: 1.9; }
+article a { color: var(--primary); }
 .cta {
   display: inline-block;
   margin-top: 18px;
@@ -721,11 +754,11 @@ article li { margin: 4px 0; }
 }
 .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
 .app-pitch {
-  margin-top: 48px;
+  margin-top: 56px;
   padding: 32px 28px;
   background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 .app-pitch h2 { margin-top: 0; font-size: 19px; }
@@ -747,8 +780,7 @@ article li { margin: 4px 0; }
   height: auto;
   display: block;
   border-radius: 20px;
-  border: 1px solid var(--line);
-  box-shadow: 0 16px 32px -20px rgba(40, 42, 38, 0.4);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08), 0 16px 32px -20px rgba(40, 42, 38, 0.35);
   scroll-snap-align: start;
 }
 .rating {
@@ -771,10 +803,28 @@ article li { margin: 4px 0; }
 .footer-links a { color: var(--ink-soft); text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; }
 .cards { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
-.card { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
-.card a { display: block; padding: 20px 22px; text-decoration: none; color: inherit; }
-.card h2 { margin: 0 0 6px; font-size: 17px; }
-.card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.card {
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09); }
+.card a { display: block; padding: 22px 24px; text-decoration: none; color: inherit; }
+.card .card-meta { display: flex; gap: 10px; align-items: center; margin: 0 0 10px; }
+.card .tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.card .read-min { font-size: 12px; color: var(--ink-soft); }
+.card h2 { margin: 0 0 8px; font-size: 17px; line-height: 1.6; color: var(--ink); }
+.card p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+.card .more { display: block; margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--primary); }
 """
 
 # Tips page: lighter than the LP, card-per-tip. Tokens mirror ModernCardDesign.
@@ -851,8 +901,8 @@ body {
 .tip {
   padding: 20px 22px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .tip .badge {
   display: inline-block;
@@ -873,8 +923,8 @@ body {
   margin: clamp(40px, 8vw, 64px) 0 0;
   padding: 22px 24px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   color: var(--ink-soft);
   font-size: clamp(15px, 4vw, 16px);
 }
@@ -886,8 +936,8 @@ body {
 .faq-item {
   padding: 20px 22px;
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .faq-q { margin: 0 0 10px; font-size: 15.5px; font-weight: 600; color: var(--ink); line-height: 1.55; }
 .faq-a { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; }
@@ -936,6 +986,15 @@ footer {
 """
 
 FEATURE_VARS = ["--f-green", "--f-blue", "--f-mustard", "--f-purple"]
+
+# features カードの丸アイコン（stroke=currentColor の inline SVG）。順序は LOCALES["ja"]["features"] と対応:
+# 判定チェック / カード / 循環（定期） / 雲（iCloud）
+FEATURE_ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.5l4 4-4 4"/><path d="M3 11v-1.5a3 3 0 0 1 3-3h15"/><path d="M7 21.5l-4-4 4-4"/><path d="M21 13v1.5a3 3 0 0 1-3 3H3"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 18.5a4.5 4.5 0 0 0 .9-8.9 6 6 0 0 0-11.7 1.3A3.75 3.75 0 0 0 7 18.5z"/></svg>',
+]
 
 
 def url_for(locale_data, page="index"):
@@ -1044,6 +1103,7 @@ def index_html(code, d):
     )
     features_html = "\n".join(
         f'        <div class="f" style="--f: var({FEATURE_VARS[i]})">'
+        f'<div class="f-icon">{FEATURE_ICONS[i]}</div>'
         f"<strong>{name}</strong><span>{sub}</span></div>"
         for i, (name, sub) in enumerate(d["features"])
     )
@@ -1051,6 +1111,12 @@ def index_html(code, d):
         f'        <img class="shot" src="/assets/store/{code}/{n:02d}.png?v={ASSET_VERSION}" '
         f'width="1320" height="2868" loading="lazy" alt="{d["screen_alt"]} {n}" />'
         for n in range(1, SCREENSHOT_COUNT + 1)
+    )
+    verdict_rows_html = "\n".join(
+        f'          <div><dt>{label}</dt><dd class="{cls}">{val}</dd></div>'
+        if cls
+        else f"          <div><dt>{label}</dt><dd>{val}</dd></div>"
+        for label, val, cls in d["verdict_rows"]
     )
     support_href = "/support/" if not d["subdir"] else f'/{d["subdir"]}/support/'
     privacy_href = "/privacy/"
@@ -1101,9 +1167,11 @@ def index_html(code, d):
       <div class="verdict" aria-hidden="true">
         <p class="verdict-label"><span class="verdict-month">今月</span>{d["verdict_label_suffix"]}</p>
         <p class="verdict-answer">{d["verdict_answer"]}</p>
-        <p class="verdict-amount">{d["verdict_amount"]}</p>
-        <div class="verdict-bar"><span class="verdict-fill"></span></div>
-        <p class="verdict-caption">{d["verdict_caption"]}</p>
+        <dl class="verdict-rows">
+{verdict_rows_html}
+        </dl>
+        <hr class="verdict-hr" />
+        <div class="verdict-total"><span>{d["verdict_total_label"]}</span><strong>{d["verdict_total"]}</strong></div>
       </div>
       <a class="cta" href="{cta_base}?ct=lp_hero" rel="noopener">{d["cta"]}</a>
       <div class="scroll-cue" aria-hidden="true">{d["scroll_cue"]}</div>
@@ -1492,13 +1560,20 @@ def privacy_html(code, body_html):
 FRONT_MATTER_RE = re.compile(r"\A---\n(.*?)\n---\n(.*)\Z", re.DOTALL)
 
 
+ARCHETYPE_LABELS = {"pain": "悩み", "method": "方法", "persona": "暮らし"}
+
+
 def parse_article_md(path):
     raw = path.read_text()
     m = FRONT_MATTER_RE.match(raw)
     if not m:
         raise ValueError(f"{path}: missing YAML front matter (--- ... ---)")
     meta = yaml.safe_load(m.group(1)) or {}
-    meta["body_html"] = md_lib.markdown(m.group(2).strip(), extensions=["extra", "sane_lists"])
+    body_md = m.group(2).strip()
+    meta["body_html"] = md_lib.markdown(body_md, extensions=["extra", "sane_lists"])
+    # 読了時間: 日本語 ~550字/分。記号込みの概算で十分
+    plain = re.sub(r"[#*>\-\[\]()`|]", "", body_md)
+    meta["read_min"] = max(1, round(len(plain) / 550))
     return meta
 
 
@@ -1508,7 +1583,8 @@ def load_articles():
     for code in JOURNAL_LOCALES:
         journal_dir = ROOT / "content" / code / "journal"
         items = [parse_article_md(p) for p in sorted(journal_dir.glob("*.md"))] if journal_dir.exists() else []
-        items.sort(key=lambda a: a["updated"], reverse=True)
+        # hub 記事（slug == hub、他記事の親）を先頭に固定し、以降は新しい順
+        items.sort(key=lambda a: (a["slug"] == a.get("hub"), str(a["updated"])), reverse=True)
         articles[code] = items
     return articles
 
@@ -1619,7 +1695,7 @@ def article_html(code, meta, articles_by_slug):
       <p class="eyebrow">{d["journal_eyebrow"]}</p>
       <article>
         <h1>{meta["title"]}</h1>
-        <p class="updated">{d["journal_updated_label"]} {meta["updated"]}</p>
+        <p class="updated"><span>{d["journal_updated_label"]} {meta["updated"]}</span><span>約{meta["read_min"]}分で読めます</span></p>
 {meta["body_html"]}
       </article>
 
@@ -1655,8 +1731,10 @@ def journal_index_html(code, items):
     cards = "\n".join(
         f'''        <li class="card">
           <a href="{journal_href}{a["slug"]}/">
+            <p class="card-meta"><span class="tag">{ARCHETYPE_LABELS.get(a.get("archetype"), "読みもの")}</span><span class="read-min">約{a["read_min"]}分</span></p>
             <h2>{a["title"]}</h2>
             <p>{a["description"]}</p>
+            <span class="more">読む →</span>
           </a>
         </li>'''
         for a in items

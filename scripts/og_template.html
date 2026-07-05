@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- OG image source (1200x630). Render with: scripts/generate_og.py -->
+<!-- OG image source (1200x630). Render with the playwright snippet in README. -->
 <html lang="ja">
 <head>
 <meta charset="utf-8" />
@@ -8,7 +8,10 @@
   body {
     width: 1200px;
     height: 630px;
-    background: linear-gradient(160deg, #faf8f8, #f0f4ef);
+    background:
+      radial-gradient(110% 70% at 88% -8%, rgba(203, 91, 81, 0.12), transparent 60%),
+      radial-gradient(120% 85% at 8% 105%, rgba(52, 114, 85, 0.16), transparent 65%),
+      linear-gradient(180deg, #f6efec, #faf8f8);
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
     font-feature-settings: "palt" 1;
     display: flex;
@@ -17,7 +20,7 @@
     gap: 72px;
     overflow: hidden;
   }
-  .text { max-width: 560px; }
+  .text { max-width: 540px; }
   .wordmark {
     font-size: 26px;
     font-weight: 700;
@@ -39,37 +42,36 @@
     color: #828480;
   }
   .verdict {
-    width: 360px;
-    padding: 40px 42px 36px;
-    background: #fff;
-    border: 1px solid #eaeaed;
+    width: 400px;
+    padding: 34px 38px 30px;
+    background: rgba(255, 255, 255, 0.82);
     border-radius: 32px;
-    box-shadow: 0 40px 80px -40px rgba(52, 114, 85, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 40px 80px -40px rgba(52, 114, 85, 0.45);
   }
-  .verdict-label { font-size: 19px; font-weight: 600; color: #828480; }
+  .verdict-label { font-size: 18px; font-weight: 600; color: #828480; }
   .verdict-answer {
-    margin-top: 10px;
-    font-size: 52px;
+    margin: 8px 0 22px;
+    font-size: 46px;
     font-weight: 700;
-    color: #347255;
+    color: #282a26;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
   .check {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: #d4e8db url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23347255' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 26px no-repeat;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #347255 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 20px no-repeat;
   }
-  .verdict-amount {
-    margin-top: 8px;
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    font-size: 23px;
-    font-weight: 600;
-    color: #2e9e63;
-  }
-  .verdict-bar { margin-top: 26px; height: 12px; border-radius: 999px; background: #f2f2f4; overflow: hidden; }
-  .verdict-fill { display: block; height: 100%; width: 87.4%; border-radius: 999px; background: linear-gradient(90deg, #347255, #2e9e63); }
-  .verdict-caption { margin-top: 14px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 16px; color: #adadab; }
+  .rows { display: grid; gap: 12px; }
+  .rows > div { display: flex; justify-content: space-between; align-items: baseline; }
+  .rows dt { font-size: 17px; font-weight: 500; color: #828480; }
+  .rows dd { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 19px; font-weight: 600; color: #282a26; }
+  .rows dd.pos { color: #347255; }
+  .rows dd.neg { color: #cb5b51; }
+  hr { border: 0; border-top: 1.5px solid #eaeaed; margin: 18px 0 16px; }
+  .total { display: flex; justify-content: space-between; align-items: baseline; }
+  .total span { font-size: 20px; font-weight: 700; color: #282a26; }
+  .total strong { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 36px; font-weight: 700; color: #282a26; }
 </style>
 </head>
 <body>
@@ -79,11 +81,15 @@
     <p class="sub">口座残高と支払い予定を入れるだけ。<br />1円単位の家計簿は、もうつけなくていい。</p>
   </div>
   <div class="verdict">
-    <p class="verdict-label">7月の支払いに</p>
+    <p class="verdict-label">7月の支払い</p>
     <p class="verdict-answer"><span class="check"></span>足りる</p>
-    <p class="verdict-amount">余裕 +¥23,456</p>
-    <div class="verdict-bar"><span class="verdict-fill"></span></div>
-    <p class="verdict-caption">残高 ¥186,240 − 支払い ¥162,784</p>
+    <dl class="rows">
+      <div><dt>現在の残高</dt><dd>¥86,240</dd></div>
+      <div><dt>+ 収入予定</dt><dd class="pos">¥100,000</dd></div>
+      <div><dt>− 支出予定</dt><dd class="neg">−¥162,784</dd></div>
+    </dl>
+    <hr />
+    <div class="total"><span>残る金額</span><strong>¥23,456</strong></div>
   </div>
 </body>
 </html>
