@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f8" />
+    <meta name="robots" content="index,follow" />
+    <title>使い方のコツ — TARIRU</title>
+    <meta name="description" content="TARIRU を「ざっくりでも回る」ように使うコツ。残高のリセット、クレジットカードの締め日設定、ウィジェットなどをまとめました。" />
+    <meta property="og:title" content="使い方のコツ — TARIRU" />
+    <meta property="og:description" content="TARIRU を「ざっくりでも回る」ように使うコツ。残高のリセット、クレジットカードの締め日設定、ウィジェットなどをまとめました。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tariru-app.com/tips/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://tariru-app.com/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="使い方のコツ — TARIRU" />
+    <meta name="twitter:description" content="TARIRU を「ざっくりでも回る」ように使うコツ。残高のリセット、クレジットカードの締め日設定、ウィジェットなどをまとめました。" />
+    <meta name="twitter:image" content="https://tariru-app.com/assets/og.png" />
+    <link rel="canonical" href="https://tariru-app.com/tips/" />
+    <link rel="alternate" hreflang="ja" href="https://tariru-app.com/tips/" />
+    <link rel="alternate" hreflang="x-default" href="https://tariru-app.com/tips/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="apple-itunes-app" content="app-id=6752897442" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "残高が実際とズレてきた。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TARIRU はざっくり運用が前提なので、ズレるのは想定内です。口座カードをタップして、今の残高を入れ直すだけでリセットできます。つけ忘れた支出を遡って埋める必要はありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "クレジットカードの扱いがよく分からない。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "カードに「締め日」と「引き落とし日」を設定すると、利用分が引き落とし日の支払いとしてまとまります。口座からお金が出ていく日ベースで見るので、「その日に足りるか」の判定に直結します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "毎日開くのが面倒。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "毎日開かなくて大丈夫です。給料日と引き落とし日の前に、残高と予定を確認するだけで機能します。ウィジェットを置けば、開く回数はさらに減らせます。"
+      }
+    }
+  ]
+}
+    </script>
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --surface: #ffffff;
+  --surface-quiet: #f2f2f4;
+  --ink: #282a26;
+  --ink-soft: #828480;
+  --ink-faint: #adadab;
+  --primary: #347255;
+  --primary-soft: #d4e8db;
+  --line: #eaeaed;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.7;
+  font-feature-settings: "palt" 1, "kern" 1;
+  font-kerning: normal;
+}
+.wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- header ---- */
+.tips-hero { text-align: center; padding: clamp(40px, 8vw, 64px) 24px clamp(4px, 3vw, 14px); }
+.wordmark {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  color: var(--primary);
+  margin: 0 0 clamp(14px, 3vw, 22px) 0.42em;
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.tips-hero h1 {
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.tips-hero .lead { color: var(--ink-soft); font-size: clamp(15px, 4vw, 16px); max-width: 32em; margin: 16px auto 0; }
+
+/* ---- screen sections ---- */
+.screen { padding: clamp(44px, 9vw, 68px) 0 0; }
+.screen h2 { font-size: clamp(20px, 5vw, 25px); font-weight: 700; line-height: 1.45; margin: 0; }
+.screen .screen-lead { color: var(--ink-soft); font-size: clamp(14px, 3.8vw, 15px); margin: 10px 0 0; max-width: 32em; }
+.subhead {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  margin: 22px 0 0;
+}
+.tips + .subhead { margin-top: clamp(40px, 8vw, 56px); }
+
+/* ---- tip cards ---- */
+.tips { display: grid; gap: 14px; margin-top: 18px; }
+.tip {
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.tip .badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 11px;
+}
+.tip h3 { margin: 0 0 6px; font-size: 16.5px; font-weight: 600; color: var(--ink); }
+.tip p { margin: 0; color: var(--ink-soft); font-size: 14.5px; line-height: 1.72; }
+
+/* ---- note ---- */
+.note {
+  margin: clamp(40px, 8vw, 64px) 0 0;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink-soft);
+  font-size: clamp(15px, 4vw, 16px);
+}
+
+/* ---- FAQ (よくある問い合わせ) ---- */
+.faq { padding: clamp(44px, 9vw, 68px) 0 0; }
+.faq h2 { font-size: clamp(20px, 5vw, 25px); font-weight: 700; line-height: 1.45; margin: 0; }
+.faq-list { display: grid; gap: 14px; margin-top: 22px; }
+.faq-item {
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.faq-q { margin: 0 0 10px; font-size: 15.5px; font-weight: 600; color: var(--ink); line-height: 1.55; }
+.faq-a { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; }
+.faq-a + .faq-a { margin-top: 8px; }
+
+/* ---- closing cta ---- */
+.closing { text-align: center; padding: clamp(48px, 10vw, 80px) 0 clamp(8px, 3vw, 24px); }
+.closing .sub { color: var(--ink-soft); margin: 0 0 22px; font-size: clamp(15px, 4vw, 16px); }
+.cta {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
+
+/* ---- footer ---- */
+footer {
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: clamp(40px, 8vw, 72px);
+  padding: 40px 0 56px;
+}
+.footer-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+.footer-row a { color: var(--ink-soft); text-decoration: none; }
+.footer-row a:hover { text-decoration: underline; }
+
+/* ---- scroll reveal (progressive enhancement) ---- */
+.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .reveal.in { opacity: 1; transform: none; }
+.js .reveal .stagger > * { opacity: 0; transform: translateY(12px); transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .reveal.in .stagger > * { opacity: 1; transform: none; }
+.js .reveal.in .stagger > *:nth-child(2) { transition-delay: 0.06s; }
+.js .reveal.in .stagger > *:nth-child(3) { transition-delay: 0.12s; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }
+}
+    </style>
+  </head>
+  <body>
+    <header class="tips-hero">
+      <p class="wordmark">TARIRU</p>
+      <p class="eyebrow">使い方のコツ</p>
+      <h1>ざっくりでも、ちゃんと回る。</h1>
+      <p class="lead">TARIRU は毎日つけなくても崩れないように作っています。知っておくと便利な操作と、よくある質問をまとめました。</p>
+    </header>
+
+    <main>
+      <section class="screen reveal">
+        <div class="wrap">
+          <h2>ホームで</h2>
+          <p class="screen-lead">「足りる？」の答えが出る画面。確認は数秒で終わります。</p>
+          <div class="tips stagger">
+            <div class="tip"><span class="badge">タップ</span><h3>口座カードから残高を入れ直す</h3><p>実際の残高とズレてきたら、口座カードをタップして今の残高を上書きするだけ。数日サボっても、これだけでまた正しく判定できます。</p></div>
+            <div class="tip"><span class="badge">ウィジェット</span><h3>ホーム画面に「足りる？」を置く</h3><p>ウィジェットを追加すると、アプリを開かずに今期の資金状態を確認できます。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen reveal">
+        <div class="wrap">
+          <h2>入力で</h2>
+          <p class="screen-lead">支払いや収入の登録は、なるべく手数が少なく。</p>
+          <div class="tips stagger">
+            <div class="tip"><span class="badge">電卓</span><h3>金額欄でそのまま計算する</h3><p>金額の入力中に + − × ÷ が使えます。「家賃と駐車場を合わせて」も、電卓アプリに切り替えずその場で計算できます。</p></div>
+            <div class="tip"><span class="badge">メモ</span><h3>支払いや収入にメモを残す</h3><p>あとで見返して「これ何の支払いだっけ？」とならないよう、ひとことメモを添えられます。</p></div>
+            <div class="tip"><span class="badge">定期取引</span><h3>毎月の分は一度だけ設定する</h3><p>給与・家賃・サブスクなど毎月決まった収支は、定期取引にすると自動で登録されます。毎月手で入れるのは、変動する分だけ。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen reveal">
+        <div class="wrap">
+          <h2>設定で</h2>
+          <p class="screen-lead">自分の生活に合わせて、静かに調整。</p>
+          <div class="tips stagger">
+            <div class="tip"><span class="badge">カレンダー</span><h3>週の始まりを日曜 / 月曜で切り替える</h3><p>カレンダーの週の始まりを、使い慣れたほうに合わせられます。</p></div>
+            <div class="tip"><span class="badge">Face ID</span><h3>アプリにロックをかける</h3><p>Face ID / Touch ID でアプリをロックできます。お金の情報を、のぞき見から守ります。</p></div>
+            <div class="tip"><span class="badge">計算除外</span><h3>貯金用の口座を判定から外す</h3><p>「使わないと決めている口座」は足りるかの計算から除外できます。判定は、生活に使う口座だけで。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq reveal">
+        <div class="wrap">
+          <h2>よくある問い合わせ</h2>
+          <div class="faq-list stagger">
+            <div class="faq-item"><p class="faq-q">残高が実際とズレてきた。</p><p class="faq-a">TARIRU はざっくり運用が前提なので、ズレるのは想定内です。</p><p class="faq-a">口座カードをタップして、今の残高を入れ直すだけでリセットできます。</p><p class="faq-a">つけ忘れた支出を遡って埋める必要はありません。</p></div>
+            <div class="faq-item"><p class="faq-q">クレジットカードの扱いがよく分からない。</p><p class="faq-a">カードに「締め日」と「引き落とし日」を設定すると、利用分が引き落とし日の支払いとしてまとまります。</p><p class="faq-a">口座からお金が出ていく日ベースで見るので、「その日に足りるか」の判定に直結します。</p></div>
+            <div class="faq-item"><p class="faq-q">毎日開くのが面倒。</p><p class="faq-a">毎日開かなくて大丈夫です。</p><p class="faq-a">給料日と引き落とし日の前に、残高と予定を確認するだけで機能します。</p><p class="faq-a">ウィジェットを置けば、開く回数はさらに減らせます。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-note reveal">
+        <div class="wrap">
+          <p class="note">TARIRU は「完璧に記録すること」を求めません。ズレたら残高を入れ直す——それだけで回るように作っています。</p>
+        </div>
+      </section>
+
+      <section class="closing reveal">
+        <div class="wrap">
+          <p class="sub">まだ TARIRU を試していなければ、こちらから。</p>
+          <a class="cta" href="https://apps.apple.com/jp/app/id6752897442?ct=lp_tips" rel="noopener">App Store で入手</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-row">
+          <a href="/">← トップへ</a>
+          <a href="/support/">サポート</a>
+          <a href="/privacy/">プライバシー</a>
+          <span>© TARIRU</span>
+        </div>
+      </div>
+    </footer>
+<script>
+  document.documentElement.classList.add('js');
+  addEventListener('DOMContentLoaded', function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  });
+</script>
+  </body>
+</html>

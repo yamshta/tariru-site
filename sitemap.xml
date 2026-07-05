@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tariru-app.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/" />
+  </url>
+  <url>
+    <loc>https://tariru-app.com/support/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/support/" />
+  </url>
+  <url>
+    <loc>https://tariru-app.com/tips/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/tips/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/tips/" />
+  </url>
+  <url>
+    <loc>https://tariru-app.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/privacy/" />
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/" />
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/fukusu-koza-kanri/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/fukusu-koza-kanri/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/fukusu-koza-kanri/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/hitorigurashi-okane-kanri/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/hitorigurashi-okane-kanri/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/hitorigurashi-okane-kanri/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/kakeibo-tsuzukanai/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/kakeibo-tsuzukanai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/kakeibo-tsuzukanai/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/koteihi-mieruka/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/koteihi-mieruka/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/koteihi-mieruka/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://tariru-app.com/journal/kyuryobi-mae-okane-tarinai/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/kyuryobi-mae-okane-tarinai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/kyuryobi-mae-okane-tarinai/" />
+    <lastmod>2026-07-05</lastmod>
+  </url>
+</urlset>

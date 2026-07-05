@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f8" />
+    <meta name="robots" content="index,follow" />
+    <title>読みもの — TARIRU</title>
+    <meta name="description" content="給料日前の不安や、続かない家計簿との付き合い方。お金の「見える化」をがんばらずに済ませるヒント。" />
+    <meta property="og:title" content="読みもの — TARIRU" />
+    <meta property="og:description" content="給料日前の不安や、続かない家計簿との付き合い方。お金の「見える化」をがんばらずに済ませるヒント。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tariru-app.com/journal/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://tariru-app.com/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="読みもの — TARIRU" />
+    <meta name="twitter:description" content="給料日前の不安や、続かない家計簿との付き合い方。お金の「見える化」をがんばらずに済ませるヒント。" />
+    <meta name="twitter:image" content="https://tariru-app.com/assets/og.png" />
+    <link rel="canonical" href="https://tariru-app.com/journal/" />
+    <link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/" />
+    <link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="apple-itunes-app" content="app-id=6752897442" />
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --ink: #282a26;
+  --ink-soft: #828480;
+  --line: #eaeaed;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(48px, 10vw, 96px) 24px 80px;
+}
+h1 { font-size: 28px; font-weight: 700; margin: 0 0 24px; }
+h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; }
+a { color: var(--ink); }
+.back {
+  display: inline-block;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+:root {
+  --primary: #347255;
+  --primary-bright: #2e9e63;
+  --primary-soft: #d4e8db;
+}
+main { max-width: 680px; }
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+h1 { line-height: 1.4; }
+.updated { font-size: 13px; color: var(--ink-soft); margin: 0 0 32px; }
+article h2 { font-size: 20px; margin: 40px 0 12px; }
+article h3 { font-size: 16px; margin: 24px 0 8px; }
+article p { line-height: 1.9; }
+article ul, article ol { line-height: 1.9; color: var(--ink-soft); padding-left: 1.4em; margin: 0 0 16px; }
+article li { margin: 4px 0; }
+.cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 15px 34px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
+.app-pitch {
+  margin-top: 48px;
+  padding: 32px 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  text-align: center;
+}
+.app-pitch h2 { margin-top: 0; font-size: 19px; }
+.app-pitch p { color: var(--ink-soft); }
+.pitch-shots {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.pitch-shots::-webkit-scrollbar { display: none; }
+.pitch-shot {
+  flex: 0 0 auto;
+  width: min(48vw, 180px);
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 32px -20px rgba(40, 42, 38, 0.4);
+  scroll-snap-align: start;
+}
+.rating {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 16px;
+}
+.rating .rating-count { font-weight: 400; color: var(--ink-soft); }
+.app-pitch .note { margin: 12px 0 0; font-size: 13px; color: var(--ink-soft); }
+.related {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.related h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 12px; }
+.related ul { list-style: none; padding: 0; margin: 0; }
+.related li { margin: 8px 0; }
+.footer-links { display: flex; gap: 20px; margin-top: 24px; font-size: 13px; }
+.footer-links a { color: var(--ink-soft); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+.cards { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.card a { display: block; padding: 20px 22px; text-decoration: none; color: inherit; }
+.card h2 { margin: 0 0 6px; font-size: 17px; }
+.card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">TARIRU</p>
+      <h1>読みもの — TARIRU</h1>
+      <p class="lead">お金の不安を、がんばらずに軽くするためのヒント。</p>
+      <ul class="cards">
+        <li class="card">
+          <a href="/journal/fukusu-koza-kanri/">
+            <h2>口座が多すぎて把握できない。複数口座をラクに管理する考え方</h2>
+            <p>給与口座、引き落とし口座、貯金用、昔作った口座…。複数口座で全体像がつかめない人のための、役割分担と「合計で見る」管理の考え方をまとめました。</p>
+          </a>
+        </li>
+        <li class="card">
+          <a href="/journal/hikiotoshi-zandaka-busoku/">
+            <h2>引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法</h2>
+            <p>引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。</p>
+          </a>
+        </li>
+        <li class="card">
+          <a href="/journal/hitorigurashi-okane-kanri/">
+            <h2>一人暮らしのお金管理、最低限これだけ。ズボラでも回る仕組み</h2>
+            <p>一人暮らしを始めたけどお金の管理が分からない。家計簿は面倒。そんな人のために、固定費の把握と月2回の残高確認だけで回る最低限の仕組みをまとめました。</p>
+          </a>
+        </li>
+        <li class="card">
+          <a href="/journal/kakeibo-tsuzukanai/">
+            <h2>家計簿が続かないのは、あなたのせいじゃない。「記録しない」お金の管理法</h2>
+            <p>家計簿が続かない。何度も挫折した。そんな人のために、1円単位の記録をやめて「残高と予定だけ」でお金を回す管理法を、手順つきでまとめました。</p>
+          </a>
+        </li>
+        <li class="card">
+          <a href="/journal/koteihi-mieruka/">
+            <h2>固定費の見える化だけで、家計はだいたい回る</h2>
+            <p>節約というと日々の変動費を我慢しがち。でも家計の土台は固定費です。固定費を一覧化するだけで支出の大半が予測可能になる理由と、見える化の具体的な手順。</p>
+          </a>
+        </li>
+        <li class="card">
+          <a href="/journal/kyuryobi-mae-okane-tarinai/">
+            <h2>給料日前、お金が足りるか不安になる。ソワソワを消す3つの手順</h2>
+            <p>給料日前になると口座残高を何度も確認してしまう。お金が足りるか分からなくて不安。その正体は金額ではなく「見えないこと」。不安を数字に変える3つの手順をまとめました。</p>
+          </a>
+        </li>
+      </ul>
+
+      <a class="back" href="/">← トップへ</a>
+    </main>
+  </body>
+</html>

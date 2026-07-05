@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f8" />
+    <meta name="robots" content="index,follow" />
+    <title>引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法 — TARIRU</title>
+    <meta name="description" content="引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。" />
+    <meta property="og:title" content="引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法" />
+    <meta property="og:description" content="引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://tariru-app.com/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法" />
+    <meta name="twitter:description" content="引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。" />
+    <meta name="twitter:image" content="https://tariru-app.com/assets/og.png" />
+    <link rel="canonical" href="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <link rel="alternate" hreflang="ja" href="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <link rel="alternate" hreflang="x-default" href="https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="apple-itunes-app" content="app-id=6752897442" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法",
+  "description": "引き落とし日に残高不足でヒヤッとした。再引き落としや延滞のリスクが心配。残高不足は「気をつける」では防げません。引き落としを一覧化して事前に照合する仕組みの作り方。",
+  "url": "https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/",
+  "image": "https://tariru-app.com/assets/og.png",
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-07-05",
+  "inLanguage": "ja",
+  "author": {
+    "@type": "Organization",
+    "name": "TARIRU",
+    "url": "https://tariru-app.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TARIRU",
+    "url": "https://tariru-app.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TARIRU — 今月の支払い、足りる？をひと目で判定",
+      "item": "https://tariru-app.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "読みもの — TARIRU",
+      "item": "https://tariru-app.com/journal/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法",
+      "item": "https://tariru-app.com/journal/hikiotoshi-zandaka-busoku/"
+    }
+  ]
+}
+    </script>
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --ink: #282a26;
+  --ink-soft: #828480;
+  --line: #eaeaed;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(48px, 10vw, 96px) 24px 80px;
+}
+h1 { font-size: 28px; font-weight: 700; margin: 0 0 24px; }
+h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; }
+a { color: var(--ink); }
+.back {
+  display: inline-block;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+:root {
+  --primary: #347255;
+  --primary-bright: #2e9e63;
+  --primary-soft: #d4e8db;
+}
+main { max-width: 680px; }
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+h1 { line-height: 1.4; }
+.updated { font-size: 13px; color: var(--ink-soft); margin: 0 0 32px; }
+article h2 { font-size: 20px; margin: 40px 0 12px; }
+article h3 { font-size: 16px; margin: 24px 0 8px; }
+article p { line-height: 1.9; }
+article ul, article ol { line-height: 1.9; color: var(--ink-soft); padding-left: 1.4em; margin: 0 0 16px; }
+article li { margin: 4px 0; }
+.cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 15px 34px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
+.app-pitch {
+  margin-top: 48px;
+  padding: 32px 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  text-align: center;
+}
+.app-pitch h2 { margin-top: 0; font-size: 19px; }
+.app-pitch p { color: var(--ink-soft); }
+.pitch-shots {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.pitch-shots::-webkit-scrollbar { display: none; }
+.pitch-shot {
+  flex: 0 0 auto;
+  width: min(48vw, 180px);
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 32px -20px rgba(40, 42, 38, 0.4);
+  scroll-snap-align: start;
+}
+.rating {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 16px;
+}
+.rating .rating-count { font-weight: 400; color: var(--ink-soft); }
+.app-pitch .note { margin: 12px 0 0; font-size: 13px; color: var(--ink-soft); }
+.related {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.related h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 12px; }
+.related ul { list-style: none; padding: 0; margin: 0; }
+.related li { margin: 8px 0; }
+.footer-links { display: flex; gap: 20px; margin-top: 24px; font-size: 13px; }
+.footer-links a { color: var(--ink-soft); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+.cards { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.card a { display: block; padding: 20px 22px; text-decoration: none; color: inherit; }
+.card h2 { margin: 0 0 6px; font-size: 17px; }
+.card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">読みもの</p>
+      <article>
+        <h1>引き落としの残高不足、どう防ぐ？うっかりを仕組みで消す方法</h1>
+        <p class="updated">更新: 2026-07-05</p>
+<h2>「残高不足のお知らせ」の心臓に悪さ</h2>
+<p>カード会社からのメールで「お引き落としができませんでした」。あの通知の嫌さは、金額の問題だけではない。再引き落としの手続き、延滞扱いになるのかの心配、信用情報への影響——<strong>分からないことが一気に押し寄せる</strong>のがつらい。</p>
+<p>しかも残高不足は、お金がない人だけに起きるのではない。別の口座には十分あるのに、<strong>引き落とし口座に入れておくのを忘れた</strong>だけ、というケースがとても多い。つまりこれは資金の問題ではなく、把握の問題だ。</p>
+<h2>なぜ「気をつける」では防げないのか</h2>
+<p>残高不足を経験すると「次からは気をつけよう」と思う。でも数ヶ月後にまた起きる。理由ははっきりしている。</p>
+<ul>
+<li>引き落としは<strong>日付も金額も口座もバラバラ</strong>（カードは27日、家賃は末日、通信費は10日…）</li>
+<li>カードの請求額は<strong>月によって変わる</strong></li>
+<li>口座が複数あると、「どの口座から何が落ちるか」の組み合わせが記憶の限界を超える</li>
+</ul>
+<p>覚えておくべき組み合わせが多すぎて、人間の注意力では管理できない。注意力の問題を注意力で解決しようとするから、繰り返す。必要なのは<strong>仕組み</strong>だ。</p>
+<h2>残高不足を防ぐ仕組み、3ステップ</h2>
+<h3>1. 引き落としの「台帳」を一度だけ作る</h3>
+<p>自分名義の引き落としを、全部一覧にする。項目は4つだけ。</p>
+<ul>
+<li>何の支払いか（家賃、カード、通信費…）</li>
+<li>いくらか（変動するものは概算）</li>
+<li>毎月何日か</li>
+<li><strong>どの口座から落ちるか</strong></li>
+</ul>
+<p>これを作るのに30分もかからない。そして毎月の引き落としはほぼ固定メンバーなので、<strong>一度作れば毎月使い回せる</strong>。</p>
+<h3>2. 引き落とし日ごとに、残高と照合する</h3>
+<p>台帳ができたら、「次の引き落とし日」に注目する。その日にその口座からいくら出るのかを合計し、いまの残高と見比べる。</p>
+<blockquote>
+<p>27日にA口座から出るお金：カード 48,000円 + 通信費 5,200円 = 53,200円
+A口座の残高：61,000円 → <strong>足りる</strong></p>
+</blockquote>
+<p>足りなければ、引き落とし日の前に別口座から移す。これだけで残高不足は起きなくなる。</p>
+<h3>3. 確認のタイミングを固定する</h3>
+<p>照合を「気が向いたとき」にやると、結局忘れる。<strong>給料日と、大きい引き落とし日の前</strong>の2〜3回に固定する。給料が入ったら引き落とし口座に必要額を移す、引き落とし前日に残高を最終確認する。カレンダーやリマインダーに入れてしまえば、記憶に頼る部分がゼロになる。</p>
+<h2>クレジットカードだけは、少し特別扱いする</h2>
+<p>残高不足の主犯は、たいていクレジットカードだ。理由は「使った日」と「口座から出る日」が1〜2ヶ月ズレるから。今日の買い物は、今日の残高からは減らない。</p>
+<p>だからカードだけは、<strong>締め日と引き落とし日をセットで把握する</strong>。「15日締め・翌月10日払い」なら、今月16日以降の利用は再来月の10日に落ちる。この時差を台帳に反映しておくと、「来月の引き落としが思ったより大きい」という事故が消える。</p>
+<p>確定額はカード会社のアプリで締め日以降に見られる。確認するのは月1回、締め日の後でいい。</p>
+<h2>もし残高不足が起きてしまったら</h2>
+<p>順番に対応すれば大ごとにはなりにくい。</p>
+<ol>
+<li><strong>すぐ入金する</strong> — 同日中の再引き落としや、数日後の再引き落としがある場合が多い</li>
+<li><strong>引き落とし元に連絡する</strong> — カード会社・事業者のサイトで「引き落としできなかった場合」の案内を確認。振込用紙や再引き落とし日の案内に従う</li>
+<li><strong>放置だけはしない</strong> — 延滞が続くと信用情報に影響しうる。1回の残高不足は、すぐ対応すれば実害は小さいことが多い</li>
+</ol>
+<h2>「覚えておく」をやめた人から、残高不足は消える</h2>
+<p>引き落としの残高不足は、注意力ではなく仕組みで防ぐもの。台帳を一度作り、給料日と引き落とし日前に照合する。記憶に頼る部分をゼロにした時点で、あのヒヤッとする通知とは無縁になれる。</p>
+      </article>
+
+      <div class="app-pitch">
+        <div class="pitch-shots" aria-label="アプリ">
+          <img class="pitch-shot" src="/assets/store/ja/01.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 1" />
+          <img class="pitch-shot" src="/assets/store/ja/02.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 2" />
+          <img class="pitch-shot" src="/assets/store/ja/03.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 3" />
+          <img class="pitch-shot" src="/assets/store/ja/04.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 4" />
+          <img class="pitch-shot" src="/assets/store/ja/05.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 5" />
+          <img class="pitch-shot" src="/assets/store/ja/06.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 6" />
+          <img class="pitch-shot" src="/assets/store/ja/07.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 7" />
+          <img class="pitch-shot" src="/assets/store/ja/08.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 8" />
+          <img class="pitch-shot" src="/assets/store/ja/09.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 9" />
+          <img class="pitch-shot" src="/assets/store/ja/10.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 10" />
+        </div>
+        <p class="rating">★ 4.6<span class="rating-count"> ・ 21件の評価</span></p>
+        <h2>「今月、足りる？」だけ分かればいい。</h2>
+        <p>TARIRU は、口座残高と支払い予定から「足りるか」だけをシンプルに判定する iOS アプリです。記録はざっくりでいい。銀行連携もありません。</p>
+        <a class="cta" href="https://apps.apple.com/jp/app/id6752897442?ct=journal_hikiotoshi-zandaka-busoku" rel="noopener">App Store で入手</a>
+        <p class="note">無料でダウンロードできます。</p>
+      </div>
+
+      <nav class="related" aria-label="あわせて読みたい">
+        <h2>あわせて読みたい</h2>
+        <ul>
+          <li><a href="/journal/kakeibo-tsuzukanai/">家計簿が続かないのは、あなたのせいじゃない。「記録しない」お金の管理法</a></li>
+        </ul>
+      </nav>
+
+      <a class="back" href="/journal/">読みものへ戻る</a>
+
+      <nav class="footer-links">
+        <a href="/support/">サポート</a>
+        <a href="/privacy/">プライバシー</a>
+      </nav>
+    </main>
+<script>
+  document.querySelectorAll('.showcase, .pitch-shots').forEach(function (el) {
+    var down = false, startX = 0, startScroll = 0, raf = null, lastX = 0;
+    function apply() {
+      raf = null;
+      el.scrollLeft = startScroll - (lastX - startX);
+    }
+    el.addEventListener('mousedown', function (e) {
+      down = true;
+      startX = lastX = e.clientX;
+      startScroll = el.scrollLeft;
+      el.style.scrollSnapType = 'none';
+      el.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (!down) return;
+      lastX = e.clientX;
+      if (raf == null) raf = requestAnimationFrame(apply);
+    });
+    document.addEventListener('mouseup', function () {
+      if (!down) return;
+      down = false;
+      el.style.cursor = '';
+      el.style.scrollSnapType = '';
+    });
+  });
+</script>
+  </body>
+</html>

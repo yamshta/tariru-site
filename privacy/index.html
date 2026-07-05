@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>プライバシーポリシー — TARIRU</title>
+    <meta name="description" content="TARIRU のプライバシーポリシー。入力した金融情報は端末とあなたの iCloud にのみ保存され、開発者のサーバーはありません。銀行・カード会社との連携もありません。" />
+    <link rel="canonical" href="https://tariru-app.com/privacy/" />
+    <meta property="og:locale" content="ja_JP" />
+    <link rel="alternate" hreflang="ja" href="https://tariru-app.com/privacy/" />
+    <link rel="alternate" hreflang="x-default" href="https://tariru-app.com/privacy/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --ink: #282a26;
+  --ink-soft: #828480;
+  --line: #eaeaed;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(48px, 10vw, 96px) 24px 80px;
+}
+h1 { font-size: 28px; font-weight: 700; margin: 0 0 24px; }
+h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+p { line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; }
+a { color: var(--ink); }
+.back {
+  display: inline-block;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+main { max-width: 720px; }
+h1 { font-size: 26px; }
+h2 { font-size: 17px; }
+li { line-height: 1.7; color: var(--ink-soft); margin: 4px 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+code { font-size: 0.9em; background: #f2f2f4; padding: 1px 5px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>TARIRU プライバシーポリシー</h1>
+      <p>最終更新日：2026 年 7 月 5 日</p>
+      <p><strong>ひとことで：</strong> あなたが入力したお金の情報はあなたのものです。TARIRU は銀行・カード会社など<strong>外部の金融機関と一切連携しません</strong>。口座の残高や支払い予定はあなた自身が入力するもので、保存先はあなたの端末と iCloud（プライベートデータベース）だけです。開発者のサーバーはなく、開発者が内容を見ることもできません。アプリが行う通信は、Apple の課金（StoreKit）と、アプリの品質改善のための匿名の利用状況・クラッシュ情報（Firebase）に限られ、<strong>入力した金額・口座名・メモの内容が送信されることはありません</strong>。広告はありません。</p>
+      <hr />
+      <h2>第 1 条（基本方針）</h2>
+      <p>本アプリ「TARIRU」（以下「本アプリ」）は、口座残高と支払い予定から「今月の支払いに足りるか」を判定することを支援する iOS アプリです。本アプリは、機能提供に必要な最小限の範囲でのみ情報を扱い、ユーザーのプライバシー保護を最優先とします。</p>
+      <h2>第 2 条（取得・保存する情報）</h2>
+      <p>本アプリが取り扱う情報は、以下に限られます。いずれも<strong>ユーザー自身が入力した情報</strong>です。</p>
+      <ol>
+      <li><strong>口座・カードの情報</strong> — ユーザーが付けた名前（例：「メイン口座」）と残高。銀行の口座番号・カード番号・暗証番号などの入力を求めることはありません
+      </li>
+      <li><strong>支払い・収入の予定と実績</strong> — 金額、日付、メモ
+      </li>
+      <li><strong>アプリ内設定</strong> — 基準日、週の始まり、通知設定などのアプリ動作に必要な設定値
+      </li></ol>
+      <p>本アプリは、氏名・メールアドレス・電話番号・位置情報・連絡先・写真・端末識別子等の個人情報を取得しません。</p>
+      <h2>第 3 条（外部の金融機関との連携について）</h2>
+      <p>本アプリは、銀行・クレジットカード会社・電子マネー等の<strong>いかなる外部金融サービスとも連携しません</strong>。</p>
+      <ul>
+      <li>口座やカードの ID・パスワードを預かることはありません
+      </li>
+      <li>金融機関のサイトや API にアクセスすることはありません
+      </li>
+      <li>本アプリに表示される残高・支払い情報は、すべてユーザー自身が入力したものです
+      </li></ul>
+      <h2>第 4 条（iCloud への保存と同期）</h2>
+      <p>本アプリは、入力された情報をあなたの <strong>iCloud のプライベートデータベース</strong>（CloudKit Private Database）にのみ保存・同期します。これは Apple が提供するストレージで、保存内容にアクセスできるのはあなた本人だけです。本アプリの開発者は、保存された内容を閲覧することも、取得することもできません。</p>
+      <p>iCloud の利用条件・セキュリティについては、Apple のプライバシーポリシーが適用されます。</p>
+      <h2>第 5 条（利用目的）</h2>
+      <p>取り扱う情報は、以下の目的でのみ利用します。</p>
+      <ol>
+      <li>口座残高と支払い・収入の予定から、資金の充足性（足りるか）を計算してユーザーに表示する
+      </li>
+      <li>ユーザーが登録した取引を、ユーザー自身が見返せるように保存・表示する
+      </li>
+      <li>引き落とし日等に関する通知をユーザーの端末上で生成する
+      </li>
+      <li>アプリの動作に必要な設定値を保持する
+      </li></ol>
+      <h2>第 6 条（外部サービスの利用）</h2>
+      <p>本アプリは、機能提供のために以下の外部サービスを利用します。<strong>入力した金額・口座名・メモの内容が、いずれのサービスにも送信されることはありません</strong>（Firebase の詳細は第 12 条）。</p>
+      <ul>
+      <li><strong>iCloud / CloudKit</strong>（Apple 提供。あなた自身のプライベートデータベースにのみ保存・同期）
+      </li>
+      <li><strong>Apple StoreKit</strong>（買い切りのフルアクセス購入・復元の管理。入力内容は送信されません）
+      </li>
+      <li><strong>Firebase Analytics / Crashlytics / Remote Config</strong>（Google 提供。匿名の利用状況の集計・クラッシュ情報の収集・アプリ設定値の配信。詳細は第 12 条）
+      </li></ul>
+      <p>本アプリに開発者が運営するサーバーはありません。個人アカウントを要する認証サービスも使用しません。広告は表示せず、広告のための SDK も組み込んでいません。</p>
+      <h2>第 7 条（第三者提供）</h2>
+      <p>本アプリの開発者は、ユーザーが入力した口座・残高・取引の内容にアクセスする手段を持たず、これらを第三者に提供しません。</p>
+      <p>法令に基づき開示が義務付けられた場合に限り、所定の手続きに従い対応します。</p>
+      <h2>第 8 条（データの削除）</h2>
+      <p>本アプリをアンインストールした場合、端末上のデータは削除されます。iCloud 上のデータは、Apple の設定（設定 → Apple ID → iCloud → ストレージ管理）から削除できます。</p>
+      <p>また、アプリ内のバックアップ機能で書き出したファイルは、ユーザー自身の管理下（ファイル App 等）に保存され、本アプリや開発者がアクセスすることはありません。</p>
+      <h2>第 9 条（安全管理措置）</h2>
+      <ul>
+      <li>アプリに Face ID / Touch ID によるロックをかけることができます（App ロック機能）
+      </li>
+      <li>iCloud との通信は Apple が SSL/TLS で暗号化します
+      </li>
+      <li>本アプリは独自サーバーを持たないため、開発者側で取り扱う情報そのものが存在しません
+      </li></ul>
+      <h2>第 10 条（未成年者の利用）</h2>
+      <p>未成年者が利用する場合は、保護者の同意を得たうえで利用してください。</p>
+      <h2>第 11 条（プライバシーポリシーの変更）</h2>
+      <p>本ポリシーは、法令の変更、機能の追加、Apple のフレームワーク仕様変更等により、改定されることがあります。重要な変更がある場合は、アプリのアップデート時または本ポリシーの公開ページで告知します。</p>
+      <h2>第 12 条（Firebase の利用について）</h2>
+      <p>本アプリは、アプリの品質改善および不具合の早期発見のために、Google の Firebase Analytics（利用状況の集計）、Firebase Crashlytics（クラッシュレポート）、Firebase Remote Config（アプリ設定値の配信）を利用しています。</p>
+      <ul>
+      <li><strong>送信される情報</strong>:
+      <ul>
+      <li>Firebase が自動的に発行する匿名化された install ID（個人を直接特定する識別子ではありません）
+      </li>
+      <li>アプリ内の操作の種類を示す集計イベント（例：オンボーディングを完了した、取引を登録した、判定画面を見た）。<strong>イベントには操作の種類のみが含まれ、金額・口座名・メモなどの内容は含まれません</strong>
+      </li>
+      <li>アプリが異常終了した際のクラッシュ情報（stack trace、アプリのバージョン等）
+      </li></ul>
+      </li>
+      <li><strong>送信されない情報</strong>: 入力した金額、口座・カードの名前、取引のメモ、残高。これらを計測イベントに載せない設計になっています
+      </li>
+      <li>Remote Config は設定値（機能フラグ、カードのカタログ情報等）を<strong>受信するのみ</strong>で、ユーザーの入力内容を送信しません
+      </li>
+      <li>送信先は Google LLC（米国）です。Google の <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase Privacy Information</a> が適用されます
+      </li></ul>
+      <h2>第 13 条（お問い合わせ）</h2>
+      <p>本ポリシーに関するお問い合わせは、App Store のアプリページ内「開発元」セクションよりご連絡ください。</p>
+
+      <a class="back" href="/">← トップへ</a>
+    </main>
+  </body>
+</html>

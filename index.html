@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f8" />
+    <meta name="robots" content="index,follow" />
+    <title>TARIRU — 今月の支払い、足りる？をひと目で判定</title>
+    <meta name="description" content="TARIRU は、口座残高と支払い予定から「今月、足りる？」だけをシンプルに判定する iOS アプリ。銀行連携なし、1円単位の記録も不要。家計簿が続かなくても大丈夫。" />
+    <meta property="og:title" content="TARIRU — 今月の支払い、足りる？をひと目で判定" />
+    <meta property="og:description" content="TARIRU は、口座残高と支払い予定から「今月、足りる？」だけをシンプルに判定する iOS アプリ。銀行連携なし、1円単位の記録も不要。家計簿が続かなくても大丈夫。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tariru-app.com/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://tariru-app.com/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TARIRU — 今月の支払い、足りる？をひと目で判定" />
+    <meta name="twitter:description" content="TARIRU は、口座残高と支払い予定から「今月、足りる？」だけをシンプルに判定する iOS アプリ。銀行連携なし、1円単位の記録も不要。家計簿が続かなくても大丈夫。" />
+    <meta name="twitter:image" content="https://tariru-app.com/assets/og.png" />
+    <link rel="canonical" href="https://tariru-app.com/" />
+    <link rel="alternate" hreflang="ja" href="https://tariru-app.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://tariru-app.com/" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="apple-itunes-app" content="app-id=6752897442" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "TARIRU",
+  "description": "TARIRU は、口座残高と支払い予定から「今月、足りる？」だけをシンプルに判定する iOS アプリ。銀行連携なし、1円単位の記録も不要。家計簿が続かなくても大丈夫。",
+  "url": "https://tariru-app.com/",
+  "image": "https://tariru-app.com/assets/og.png",
+  "operatingSystem": "iOS",
+  "applicationCategory": "FinanceApplication",
+  "installUrl": "https://apps.apple.com/app/id6752897442",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  }
+}
+    </script>
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #faf8f8;
+  --surface: #ffffff;
+  --surface-quiet: #f2f2f4;
+  --ink: #282a26;
+  --ink-soft: #828480;
+  --ink-faint: #adadab;
+  --primary: #347255;
+  --primary-bright: #2e9e63;
+  --primary-soft: #d4e8db;
+  --coral: #cb5b51;
+  --coral-soft: #f5dad6;
+  --line: #eaeaed;
+  --f-green: #347255;
+  --f-blue: #405c8c;
+  --f-mustard: #b9a03c;
+  --f-purple: #8c59a6;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.7;
+  /* CJK 句読点 (、。) を proportional alternate で詰め組み。 */
+  font-feature-settings: "palt" 1, "kern" 1;
+  font-kerning: normal;
+}
+.wrap { max-width: 660px; margin: 0 auto; padding: 0 24px; }
+section { padding: clamp(64px, 13vw, 132px) 0; }
+
+/* ---- hero ---- */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(48px, 10vw, 96px) 24px clamp(40px, 8vw, 72px);
+  position: relative;
+}
+.wordmark {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  color: var(--primary);
+  margin: 0 0 clamp(24px, 5vw, 40px) 0.42em;
+}
+.hero h1 {
+  font-size: clamp(30px, 7vw, 46px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  margin: 0;
+}
+.hero .sub {
+  color: var(--ink-soft);
+  font-size: clamp(15px, 4vw, 17px);
+  max-width: 30em;
+  margin: clamp(16px, 4vw, 22px) auto 0;
+}
+
+/* ---- verdict card (the TARIRU signature) ---- */
+.verdict {
+  width: min(88vw, 340px);
+  margin: clamp(36px, 8vw, 60px) auto 0;
+  padding: 26px 28px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 30px 64px -30px rgba(52, 114, 85, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-align: left;
+}
+.verdict-label { margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+.verdict-answer {
+  margin: 6px 0 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.verdict-answer::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  /* チェックマーク */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23347255' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.verdict-amount {
+  margin: 4px 0 0;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary-bright);
+}
+.verdict-bar {
+  margin-top: 18px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-quiet);
+  overflow: hidden;
+}
+.verdict-fill {
+  display: block;
+  height: 100%;
+  width: 87.4%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-bright));
+}
+.js .verdict-fill { width: 0; transition: width 1.1s 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .verdict.in .verdict-fill { width: 87.4%; }
+.verdict-caption {
+  margin: 10px 0 0;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+/* ---- cta ---- */
+.cta {
+  display: inline-block;
+  margin-top: clamp(28px, 6vw, 40px);
+  padding: 15px 30px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(52, 114, 85, 0.6); }
+.scroll-cue {
+  margin-top: clamp(36px, 8vw, 64px);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  animation: cue 2.4s ease-in-out infinite;
+}
+@keyframes cue {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* ---- shared section type ---- */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+h2 {
+  font-size: clamp(22px, 5.2vw, 30px);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.lead { color: var(--ink-soft); font-size: clamp(15px, 4vw, 16px); margin: 16px 0 0; }
+.scenario { color: var(--ink); font-size: clamp(16px, 4.4vw, 18px); line-height: 1.7; margin: 18px 0 0; }
+
+/* ---- why: thought list ---- */
+.thoughts { list-style: none; padding: 0; margin: 32px 0 0; }
+.thoughts li {
+  position: relative;
+  padding: 14px 0 14px 26px;
+  color: var(--ink);
+  font-size: clamp(15px, 4vw, 16px);
+  border-top: 1px solid var(--line);
+}
+.thoughts li:last-child { border-bottom: 1px solid var(--line); }
+.thoughts li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+}
+.note {
+  margin: 30px 0 0;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink-soft);
+  font-size: clamp(15px, 4vw, 16px);
+}
+
+/* ---- steps ---- */
+.steps { display: grid; gap: 16px; margin-top: 36px; }
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.step .n {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; }
+.step p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+/* ---- app showcase (App Store style gallery) ---- */
+.app .wrap { margin-bottom: 4px; }
+.showcase {
+  display: flex;
+  gap: 18px;
+  margin-top: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px max(24px, calc((100vw - 660px) / 2)) 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.showcase::-webkit-scrollbar { display: none; }
+.shot {
+  flex: 0 0 auto;
+  width: min(64vw, 272px);
+  height: auto;
+  display: block;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  box-shadow: 0 26px 54px -30px rgba(40, 42, 38, 0.4);
+  background: var(--surface);
+  scroll-snap-align: center;
+}
+
+/* ---- features (4-up grid) ---- */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 36px;
+}
+@media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
+.f {
+  padding: 22px 20px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--f, var(--primary)) 8%, #fff),
+      color-mix(in srgb, var(--f, var(--primary)) 18%, #fff));
+  border: 1px solid color-mix(in srgb, var(--f, var(--primary)) 20%, var(--line));
+}
+.f strong { display: block; color: color-mix(in srgb, var(--f, var(--primary)) 85%, #000); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.f span { color: var(--ink-soft); font-size: 13.5px; line-height: 1.6; }
+
+/* ---- privacy ---- */
+.privacy { text-align: center; }
+.privacy .lead { max-width: 30em; margin-left: auto; margin-right: auto; }
+
+/* ---- closing ---- */
+.closing { text-align: center; padding-bottom: clamp(40px, 9vw, 80px); }
+.closing h2 { font-size: clamp(24px, 6vw, 34px); }
+.closing .sub { color: var(--ink-soft); margin: 14px 0 0; font-size: clamp(15px, 4vw, 17px); }
+
+/* ---- footer ---- */
+footer {
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 40px 0 56px;
+}
+.footer-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+.footer-row a { color: var(--ink-soft); text-decoration: none; }
+.footer-row a:hover { text-decoration: underline; }
+
+/* ---- scroll reveal (progressive enhancement) ---- */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* staggered reveal: children settle in one after another */
+.js .reveal .stagger > * { opacity: 0; transform: translateY(14px); transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .reveal.in .stagger > * { opacity: 1; transform: none; }
+.js .reveal.in .stagger > *:nth-child(2) { transition-delay: 0.07s; }
+.js .reveal.in .stagger > *:nth-child(3) { transition-delay: 0.14s; }
+.js .reveal.in .stagger > *:nth-child(4) { transition-delay: 0.21s; }
+.js .reveal.in .stagger > *:nth-child(5) { transition-delay: 0.28s; }
+.js .reveal.in .stagger > *:nth-child(6) { transition-delay: 0.35s; }
+
+/* hero entrance on first load */
+.js .hero .wordmark { animation: enter 0.8s 0.05s both cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .hero h1 { animation: enter 0.8s 0.16s both cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .hero .sub { animation: enter 0.8s 0.28s both cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .hero .verdict { animation: enter 1s 0.4s both cubic-bezier(0.22, 0.61, 0.36, 1); }
+.js .hero .cta { animation: enter 0.8s 0.58s both cubic-bezier(0.22, 0.61, 0.36, 1); }
+@keyframes enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-cue { animation: none; }
+  .js .hero .wordmark, .js .hero h1, .js .hero .sub, .js .hero .verdict, .js .hero .cta { animation: none; }
+  .js .reveal, .js .reveal .stagger > * { opacity: 1; transform: none; transition: none; }
+  .js .verdict-fill { width: 87.4%; transition: none; }
+}
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <p class="wordmark">TARIRU</p>
+      <h1>今月の支払い、足りる？</h1>
+      <p class="sub">口座残高と支払い予定を入れるだけ。1円単位の家計簿は、もうつけなくていい。</p>
+      <div class="verdict" aria-hidden="true">
+        <p class="verdict-label"><span class="verdict-month">今月</span>の支払いに</p>
+        <p class="verdict-answer">足りる</p>
+        <p class="verdict-amount">余裕 +¥23,456</p>
+        <div class="verdict-bar"><span class="verdict-fill"></span></div>
+        <p class="verdict-caption">残高 ¥186,240 ・ 支払い予定 ¥162,784</p>
+      </div>
+      <a class="cta" href="https://apps.apple.com/jp/app/id6752897442?ct=lp_hero" rel="noopener">App Store で入手</a>
+      <div class="scroll-cue" aria-hidden="true">下へ</div>
+    </header>
+
+    <main>
+      <section class="why">
+        <div class="wrap reveal">
+          <p class="eyebrow">なぜ TARIRU か</p>
+          <h2>給料日前、口座残高を何度も確認していませんか。</h2>
+          <p class="scenario">引き落とし日が近づくと、なんとなくソワソワする。残高を見ても、このあといくら出ていくのかまでは分からない。</p>
+          <p class="lead">それは、あなたがだらしないからではありません。1円単位の家計簿を毎日つけ続けるほうが、ずっと大変なこと。</p>
+          <ul class="thoughts stagger">
+        <li>月末の引き落としが気になって、つい口座を見てしまう</li>
+        <li>口座もカードも複数あって、全体像がつかめない</li>
+        <li>家計簿アプリは何度も入れたけど、続かなかった</li>
+        <li>レシートを撮るのも、つけ忘れを埋めるのも疲れた</li>
+        <li>完璧な記録より「足りるかどうか」だけ知りたい</li>
+          </ul>
+          <p class="note">本当に知りたいのは、たったひとつ。「今月の支払い、足りる？」——TARIRU は、その答えだけをシンプルに出します。</p>
+        </div>
+      </section>
+
+      <section class="how">
+        <div class="wrap reveal">
+          <p class="eyebrow">使い方</p>
+          <h2>やることは、3つだけ。</h2>
+          <div class="steps stagger">
+        <div class="step"><div class="n">1</div><div><h3>残高を入れる</h3><p>口座の残高をそのまま入力。銀行連携も、ID・パスワードの入力も要りません。</p></div></div>
+        <div class="step"><div class="n">2</div><div><h3>予定を登録する</h3><p>家賃やカードの引き落とし、給料などの予定を登録。毎月の分は一度設定すれば自動で作られます。</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>足りるか、見る</h3><p>残高と予定から自動計算。余裕があるか、足りないかが、ひと目でわかります。</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="app reveal">
+        <div class="wrap">
+          <p class="eyebrow">アプリ</p>
+          <h2>これが、TARIRU。</h2>
+        </div>
+        <div class="showcase stagger" aria-label="アプリ">
+        <img class="shot" src="/assets/store/ja/01.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 1" />
+        <img class="shot" src="/assets/store/ja/02.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 2" />
+        <img class="shot" src="/assets/store/ja/03.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 3" />
+        <img class="shot" src="/assets/store/ja/04.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 4" />
+        <img class="shot" src="/assets/store/ja/05.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 5" />
+        <img class="shot" src="/assets/store/ja/06.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 6" />
+        <img class="shot" src="/assets/store/ja/07.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 7" />
+        <img class="shot" src="/assets/store/ja/08.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 8" />
+        <img class="shot" src="/assets/store/ja/09.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 9" />
+        <img class="shot" src="/assets/store/ja/10.png?v=20260705" width="1320" height="2868" loading="lazy" alt="TARIRU の画面 10" />
+        </div>
+      </section>
+
+      <section class="features-section">
+        <div class="wrap reveal">
+          <p class="eyebrow">できること</p>
+          <h2>がんばらないのに、ちゃんと見える。</h2>
+          <p class="lead">記録が目的のアプリではありません。「足りるか」に必要なものだけ。</p>
+          <div class="features stagger" aria-label="TARIRU の主な機能">
+        <div class="f" style="--f: var(--f-green)"><strong>足りるかの判定</strong><span>残高と予定収支から自動計算。余裕額・不足額がひと目でわかります。</span></div>
+        <div class="f" style="--f: var(--f-blue)"><strong>口座もカードも、ひとつに</strong><span>銀行口座・現金・クレジットカード・口座振替をまとめて一画面で。</span></div>
+        <div class="f" style="--f: var(--f-mustard)"><strong>毎月の収支は自動で</strong><span>給与・家賃・サブスクは一度設定すれば、毎月自動で登録されます。</span></div>
+        <div class="f" style="--f: var(--f-purple)"><strong>iCloud で安心</strong><span>データは自動でバックアップ・同期。機種変更しても、そのまま使えます。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy">
+        <div class="wrap reveal">
+          <p class="eyebrow">プライバシー</p>
+          <h2>あなたのお金の情報は、外に出ない。</h2>
+          <p class="lead">銀行やカード会社との連携はありません。あなたが入力した情報は、あなたの iPhone と、あなただけがアクセスできる iCloud にだけ保存されます。開発者のサーバーはありません。</p>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="wrap reveal">
+          <h2>月末のソワソワを、「今月も大丈夫」に。</h2>
+          <p class="sub">毎日開かなくていい。給料日と引き落とし日の前に、確認するだけ。</p>
+          <a class="cta" href="https://apps.apple.com/jp/app/id6752897442?ct=lp_footer" rel="noopener">App Store で入手</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-row">
+          <a href="/tips/">使い方のコツ</a>
+          <a href="/journal/">読みもの</a>
+          <a href="/support/">サポート</a>
+          <a href="/privacy/">プライバシー</a>
+          <span>© TARIRU</span>
+        </div>
+      </div>
+    </footer>
+<script>
+  document.documentElement.classList.add('js');
+  addEventListener('DOMContentLoaded', function () {
+    // 判定カードの「今月」を実際の月に差し替え（静的サイトの鮮度演出）
+    var month = document.querySelector('.verdict-month');
+    if (month) month.textContent = (new Date().getMonth() + 1) + '月';
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.16 });
+    document.querySelectorAll('.reveal, .verdict').forEach(function (el) { io.observe(el); });
+  });
+</script>
+<script>
+  document.querySelectorAll('.showcase, .pitch-shots').forEach(function (el) {
+    var down = false, startX = 0, startScroll = 0, raf = null, lastX = 0;
+    function apply() {
+      raf = null;
+      el.scrollLeft = startScroll - (lastX - startX);
+    }
+    el.addEventListener('mousedown', function (e) {
+      down = true;
+      startX = lastX = e.clientX;
+      startScroll = el.scrollLeft;
+      el.style.scrollSnapType = 'none';
+      el.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (!down) return;
+      lastX = e.clientX;
+      if (raf == null) raf = requestAnimationFrame(apply);
+    });
+    document.addEventListener('mouseup', function () {
+      if (!down) return;
+      down = false;
+      el.style.cursor = '';
+      el.style.scrollSnapType = '';
+    });
+  });
+</script>
+  </body>
+</html>
