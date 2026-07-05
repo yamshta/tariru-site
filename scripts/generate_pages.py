@@ -42,7 +42,8 @@ APP_RATING = {"score": "4.6", "count": 21}
 # assets のキャッシュ回避クエリ。画像を差し替えたら日付を上げる。
 ASSET_VERSION = "20260705"
 # GA4 web stream measurement ID (G-XXXXXXXXXX). Empty = no analytics tag emitted.
-GA4_MEASUREMENT_ID = ""
+# Stream: properties/506107058/dataStreams/15202507699 (tariru.app)
+GA4_MEASUREMENT_ID = "G-5V8HE6R7MC"
 PRIVACY_LOCALES = ("ja",)
 TIPS_LOCALES = ("ja",)
 JOURNAL_LOCALES = ("ja",)

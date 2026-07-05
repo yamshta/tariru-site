@@ -111,7 +111,7 @@ A  185.199.111.153
 
 ## TODO
 
-- [ ] GA4 web stream を作成して `GA4_MEASUREMENT_ID` を設定
+- [x] GA4 web stream 作成済み（`G-5V8HE6R7MC`）
 - [ ] サポート窓口（メール等）を決めて `contact_body` を差し替え
 - [ ] App Store Connect の marketing / support / privacy URL を差し替え（fastlane metadata も）
 - [ ] Google Search Console に sitemap 登録
