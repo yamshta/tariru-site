@@ -34,7 +34,7 @@ def app_store_cta_url(code):
     return f"https://apps.apple.com/{country}/app/id{APP_STORE_ID}"
 
 
-BASE_URL = "https://tariru-app.com"
+BASE_URL = "https://tariru.app"
 OG_IMAGE = f"{BASE_URL}/assets/og.png"
 # App Store の実評価 (社会的証明として journal 記事の CTA に表示)。
 # 取得元: https://itunes.apple.com/lookup?id=6752897442&country=jp — 定期的に手動で更新する。

@@ -1,6 +1,6 @@
 # tariru-site
 
-TARIRU の公式 LP (`https://tariru-app.com/`)。GitHub Pages で配信。
+TARIRU の公式 LP (`https://tariru.app/`)。GitHub Pages で配信。
 
 主目的:
 - App Store の マーケティング / サポート / プライバシー URL のホスト（現状の Notion ページを置き換える）
@@ -23,7 +23,7 @@ TARIRU の公式 LP (`https://tariru-app.com/`)。GitHub Pages で配信。
 ├── content/
 │   ├── privacy.md          # プライバシーポリシー本文（SSoT）
 │   └── ja/journal/*.md     # 記事本文（front matter + Markdown）
-├── CNAME                   # tariru-app.com
+├── CNAME                   # tariru.app
 └── scripts/
     ├── generate_pages.py   # 全ページ + sitemap/robots の一括生成（コピーの SSoT）
     └── og_template.html    # OG 画像の元 HTML
@@ -61,9 +61,9 @@ EOF
 
 | 項目 | URL |
 |---|---|
-| marketing_url | `https://tariru-app.com/` |
-| support_url | `https://tariru-app.com/support/` |
-| privacy_url | `https://tariru-app.com/privacy/` |
+| marketing_url | `https://tariru.app/` |
+| support_url | `https://tariru.app/support/` |
+| privacy_url | `https://tariru.app/privacy/` |
 
 `TARIRU/fastlane/metadata/ja/{marketing_url,support_url,privacy_url}.txt` も合わせて更新すること。
 
@@ -71,19 +71,21 @@ EOF
 
 ### 1. ドメイン
 
-`tariru-app.com`（お名前.com で登録済み）を使う。
+`tariru.app`（Cloudflare Registrar で登録済み）を使う。
 
 ### 2. GitHub Pages 設定
 
 リポジトリ Settings → Pages:
 - Source: `Deploy from a branch`
 - Branch: `main` / root
-- Custom domain: `tariru-app.com`
-- **Enforce HTTPS** をオン（DNS 反映後）
+- Custom domain: `tariru.app`
+- **Enforce HTTPS** をオン（DNS 反映後）。`.app` TLD は HSTS preload 対象で
+  ブラウザが HTTPS を強制するため、cert 発行前は表示できないのが正常
 
-### 3. DNS 設定（お名前.com）
+### 3. DNS 設定（Cloudflare）
 
-Apex (`tariru-app.com`) を GitHub Pages の 4 つの A レコードに向ける:
+Apex (`tariru.app`) を GitHub Pages の 4 つの A レコードに向ける。
+**Proxy は OFF（灰色雲 / DNS only）** にすること（GitHub Pages の cert 発行を邪魔しない）:
 
 ```
 A  185.199.108.153
@@ -96,8 +98,8 @@ A  185.199.111.153
 
 ### 4. 反映確認
 
-- `https://tariru-app.com/` が表示される
-- `https://tariru-app.com/sitemap.xml` を Google Search Console に登録
+- `https://tariru.app/` が表示される
+- `https://tariru.app/sitemap.xml` を Google Search Console に登録
 
 ## メンテナンス
 
