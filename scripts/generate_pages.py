@@ -717,8 +717,6 @@ article h2 {
   font-size: 20px;
   line-height: 1.6;
   margin: 56px 0 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
 }
 article h3 { font-size: 16.5px; margin: 32px 0 10px; }
 /* 蛍光マーカー風の強調: 流し読みでも要点が拾える */
@@ -791,11 +789,7 @@ article a { color: var(--primary); }
 }
 .rating .rating-count { font-weight: 400; color: var(--ink-soft); }
 .app-pitch .note { margin: 12px 0 0; font-size: 13px; color: var(--ink-soft); }
-.related {
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
+.related { margin-top: 48px; }
 .related h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 12px; }
 .related ul { list-style: none; padding: 0; margin: 0; }
 .related li { margin: 8px 0; }
