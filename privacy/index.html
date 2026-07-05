@@ -72,7 +72,7 @@ code { font-size: 0.9em; background: #f2f2f4; padding: 1px 5px; border-radius: 4
     <main>
       <h1>TARIRU プライバシーポリシー</h1>
       <p>最終更新日：2026 年 7 月 5 日</p>
-      <p><strong>ひとことで：</strong> あなたが入力したお金の情報はあなたのものです。TARIRU は銀行・カード会社など<strong>外部の金融機関と一切連携しません</strong>。口座の残高や支払い予定はあなた自身が入力するもので、保存先はあなたの端末と iCloud（プライベートデータベース）だけです。開発者のサーバーはなく、開発者が内容を見ることもできません。アプリが行う通信は、Apple の課金（StoreKit）と、アプリの品質改善のための匿名の利用状況・クラッシュ情報（Firebase）に限られ、<strong>入力した金額・口座名・メモの内容が送信されることはありません</strong>。広告はありません。</p>
+      <p><strong>ひとことで：</strong> あなたが入力したお金の情報はあなたのものです。TARIRU は銀行・カード会社など<strong>外部の金融機関と一切連携しません</strong>。口座の残高や支払い予定はあなた自身が入力するもので、保存先はあなたの端末と iCloud（プライベートデータベース）だけです。開発者のサーバーはなく、開発者が内容を見ることもできません。アプリが行う通信は、Apple の課金（StoreKit）と、アプリの品質改善・通知配信のための匿名情報（Firebase）に限られ、<strong>入力した金額・口座名・メモの内容が送信されることはありません</strong>。広告はありません。</p>
       <hr />
       <h2>第 1 条（基本方針）</h2>
       <p>本アプリ「TARIRU」（以下「本アプリ」）は、口座残高と支払い予定から「今月の支払いに足りるか」を判定することを支援する iOS アプリです。本アプリは、機能提供に必要な最小限の範囲でのみ情報を扱い、ユーザーのプライバシー保護を最優先とします。</p>
@@ -114,15 +114,16 @@ code { font-size: 0.9em; background: #f2f2f4; padding: 1px 5px; border-radius: 4
       <ul>
       <li><strong>iCloud / CloudKit</strong>（Apple 提供。あなた自身のプライベートデータベースにのみ保存・同期）
       </li>
-      <li><strong>Apple StoreKit</strong>（買い切りのフルアクセス購入・復元の管理。入力内容は送信されません）
+      <li><strong>Apple StoreKit</strong>（買い切りのフルアクセス購入・復元の管理。課金処理はすべて Apple 経由で行われ、決済情報が開発者に送信されることはありません）
       </li>
-      <li><strong>Firebase Analytics / Crashlytics / Remote Config</strong>（Google 提供。匿名の利用状況の集計・クラッシュ情報の収集・アプリ設定値の配信。詳細は第 12 条）
+      <li><strong>Firebase Analytics / Crashlytics / Remote Config / Cloud Messaging</strong>（Google 提供。匿名の利用状況の集計・クラッシュ情報の収集・アプリ設定値の配信・プッシュ通知の配信管理。詳細は第 12 条）
       </li></ul>
       <p>本アプリに開発者が運営するサーバーはありません。個人アカウントを要する認証サービスも使用しません。広告は表示せず、広告のための SDK も組み込んでいません。</p>
       <h2>第 7 条（第三者提供）</h2>
       <p>本アプリの開発者は、ユーザーが入力した口座・残高・取引の内容にアクセスする手段を持たず、これらを第三者に提供しません。</p>
       <p>法令に基づき開示が義務付けられた場合に限り、所定の手続きに従い対応します。</p>
-      <h2>第 8 条（データの削除）</h2>
+      <h2>第 8 条（データの編集・削除）</h2>
+      <p>ユーザーは、登録した口座・取引などのデータを、アプリ内でいつでも編集・削除できます。</p>
       <p>本アプリをアンインストールした場合、端末上のデータは削除されます。iCloud 上のデータは、Apple の設定（設定 → Apple ID → iCloud → ストレージ管理）から削除できます。</p>
       <p>また、アプリ内のバックアップ機能で書き出したファイルは、ユーザー自身の管理下（ファイル App 等）に保存され、本アプリや開発者がアクセスすることはありません。</p>
       <h2>第 9 条（安全管理措置）</h2>
@@ -138,7 +139,7 @@ code { font-size: 0.9em; background: #f2f2f4; padding: 1px 5px; border-radius: 4
       <h2>第 11 条（プライバシーポリシーの変更）</h2>
       <p>本ポリシーは、法令の変更、機能の追加、Apple のフレームワーク仕様変更等により、改定されることがあります。重要な変更がある場合は、アプリのアップデート時または本ポリシーの公開ページで告知します。</p>
       <h2>第 12 条（Firebase の利用について）</h2>
-      <p>本アプリは、アプリの品質改善および不具合の早期発見のために、Google の Firebase Analytics（利用状況の集計）、Firebase Crashlytics（クラッシュレポート）、Firebase Remote Config（アプリ設定値の配信）を利用しています。</p>
+      <p>本アプリは、アプリの品質改善および不具合の早期発見のために、Google の Firebase Analytics（利用状況の集計）、Firebase Crashlytics（クラッシュレポート）、Firebase Remote Config（アプリ設定値の配信）、Firebase Cloud Messaging（プッシュ通知の配信管理）を利用しています。</p>
       <ul>
       <li><strong>送信される情報</strong>:
       <ul>
@@ -152,6 +153,8 @@ code { font-size: 0.9em; background: #f2f2f4; padding: 1px 5px; border-radius: 4
       <li><strong>送信されない情報</strong>: 入力した金額、口座・カードの名前、取引のメモ、残高。これらを計測イベントに載せない設計になっています
       </li>
       <li>Remote Config は設定値（機能フラグ、カードのカタログ情報等）を<strong>受信するのみ</strong>で、ユーザーの入力内容を送信しません
+      </li>
+      <li>Cloud Messaging は、プッシュ通知の配信のために Firebase が発行する匿名のデバイストークンを利用します。通知の受け取りは iOS の通知許可でいつでも制御できます
       </li>
       <li>送信先は Google LLC（米国）です。Google の <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase Privacy Information</a> が適用されます
       </li></ul>
