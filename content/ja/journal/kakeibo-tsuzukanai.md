@@ -6,7 +6,7 @@ description: "家計簿が続かない。何度も挫折した。そんな人の
 target_keywords: ["家計簿 続かない", "家計簿 挫折", "お金の管理 ずぼら"]
 persona: null
 hub: kakeibo-tsuzukanai
-spokes: [kyuryobi-mae-okane-tarinai, hikiotoshi-zandaka-busoku, koteihi-mieruka, fukusu-koza-kanri, hitorigurashi-okane-kanri]
+spokes: [kyuryobi-mae-okane-tarinai, hikiotoshi-zandaka-busoku, koteihi-mieruka, fukusu-koza-kanri, hitorigurashi-okane-kanri, kongetsu-tsukaeru-okane, kureka-hikiotoshi-kanri, sabusuku-kanri]
 updated: 2026-07-05
 ---
 ## 「今度こそ」と思って入れた家計簿アプリ、開かなくなっていませんか
